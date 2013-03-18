@@ -3,4 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+  $('.cart-container').glysellinCart()
+  $('.products-recap-form.editable').glysellinAsyncCart()
   $('.addresses-fields-container').glysellinAddress()

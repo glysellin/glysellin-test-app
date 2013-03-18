@@ -8,24 +8,35 @@
 </head>
 <body>
   <div class="container">
-    <div class='header'>
-      <div class="login-links">
-        <% if current_user %>
-          <%= button_to 'Log out', destroy_user_session_path, method: 'delete', class: 'btn login pull-right' %>
-          
-        <% else %>
-          <%= link_to 'Sign in', new_user_session_path, class: 'btn login pull-right' %>
-          <%= link_to 'Sign up', new_user_registration_path, class: 'btn login pull-right' %>
-        <% end %>
-      </div>
-      <%= link_to 'home', root_path %>
-      <div class="cart">
-        <%= render partial: "glysellin/cart/cart", locals: { cart: @cart } %>
+    <div class='navbar'>
+      <div class='navbar-inner'>
+        <%= link_to "Glysellin Test App", "/", class: "brand" %>
+        <ul class="nav">
+          <li>
+            <%= link_to 'Home', root_path %>
+          </li>
+          <% if current_user %>
+            <li>
+              <%= button_to 'Log out', destroy_user_session_path, method: 'delete', class: 'btn login pull-right' %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to 'Sign in', new_user_session_path, class: 'login pull-right' %>
+            </li>
+            <li>
+              <%= link_to 'Sign up', new_user_registration_path, class: 'login pull-right' %>
+            </li>
+          <% end %>
+          <li class="divider-vertical"></li>
+        </ul>
+        <div class="pull-right" style="padding-top:10px;">
+          <%= render_cart(@cart) %>
+        </div>
       </div>
     </div>
-    <%= render partial: "layouts/flash_notice" %>  
+    <%= render partial: "layouts/flash_notice" %>
     <%= yield %>
   </div>
-  
+
 </body>
 </html>
