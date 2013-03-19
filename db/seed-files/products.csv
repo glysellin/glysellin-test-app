@@ -1,0 +1,5 @@
+name,description,images_attributes[0][image],variants_attributes[0][name],variants_attributes[0][price],variants_attributes[0][unlimited_stock],variants_attributes[1][name],variants_attributes[1][price],variants_attributes[1][unlimited_stock]
+Apple,Nice apple with water drops included,apple.jpg,,9,1,,,
+Bunch of bananas,Have a sweet break with a tasty banana,banana.jpg,Small (x4),11,1,Big (x8),18,1
+Fruit basket,Not enough fruits ? Enjoy this beautiful fruit basket.,fruit-basket.jpg,Fresh,25,1,Frozen,19,1
+Pepper,Want to prepare some mexican food ? Pepper is an ingredient of choice !,pepper.jpg,,7,1,,,
