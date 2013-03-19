@@ -12,22 +12,19 @@
       <div class='navbar-inner'>
         <%= link_to "Glysellin Test App", "/", class: "brand" %>
         <ul class="nav">
-          <li>
-            <%= link_to 'Home', root_path %>
-          </li>
           <% if current_user %>
             <li>
-              <%= button_to 'Log out', destroy_user_session_path, method: 'delete', class: 'btn login pull-right' %>
+              <%= link_to 'Log out', destroy_user_session_path, method: 'delete' %>
             </li>
             <li>
-              <%= link_to 'Mon compte', edit_user_path, class: 'btn login pull-right' %>
+              <%= link_to 'Mon compte', user_path %>
             </li>
           <% else %>
             <li>
-              <%= link_to 'Sign in', new_user_session_path, class: 'login pull-right' %>
+              <%= link_to 'Sign in', new_user_session_path %>
             </li>
             <li>
-              <%= link_to 'Sign up', new_user_registration_path, class: 'login pull-right' %>
+              <%= link_to 'Sign up', new_user_registration_path %>
             </li>
           <% end %>
           <li class="divider-vertical"></li>

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def show
+    @orders = current_user.orders.includes(:items, :billing_address, :shipping_address).
+      where('glysellin_orders.state IN (?)', %w(payment_method_chosen paid shipped))
   end
 
   def edit
