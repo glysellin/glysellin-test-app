@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/vala/Documents/development/ruby/gems/glysellin
+GIT
+  remote: git://github.com/vala/glysellin.git
+  revision: 988024666f6cd323acd2d5629f513a0a2d9a6dd9
   specs:
     glysellin (0.3.1)
       activemerchant
