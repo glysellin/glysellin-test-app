@@ -1,0 +1,129 @@
+//***************************************************************
+//    Imports
+//***************************************************************
+// --- Importing Bootstrap variables for colors and orther --- //
+@import "bootstrap-variables"
+
+// ---------------------- All bootstrap  --------------------- //
+@import "bootstrap"
+// @import "bootstrap-responsive"
+
+// ------------------------ Compass  ------------------------- //
+@import "compass/css3/text-shadow"
+@import "compass/css3/transition"
+@import "compass/css3/box-shadow"
+
+//***************************************************************
+//    Bootstrap Overriding by Glyph (flat design)
+//***************************************************************
+
+// ------------------------ Components  ------------------------- //
+.well
+  +box-shadow(none)
+  border: 1px solid $whiteDarker
+
+// ------------------------ Alert  ------------------------- //
+
+.alert
+  +text-shadow(none)
+
+// ------------------------ Navbar  ------------------------- //
+
+.navbar-inner
+  +box-shadow(none)
+  background-color: $navbarBackground
+  background-image: none
+
+.navbar .nav > li > a
+  +text-shadow(none)
+  +single-transition(background-color, 0.2s, ease)
+
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus
+  +box-shadow(none)
+
+// ------------------------ Buttons  ------------------------- //
+
+.btn
+  +box-shadow(none)
+  +text-shadow(none)
+  background-image: none
+  +single-transition(all, 0.1s, linear)
+  // Hover/focus state
+  &:hover,
+  &:focus
+    +single-transition(all, 0.1s, linear)
+    outline: none
+    outline: 0
+  // Active state
+  &.active,
+  &:active
+    background-image: none
+    outline: 0
+    +box-shadow(rgba(0, 0 , 0 , 0.1) 0px 1px 2px 0px inset)
+
+// ------------------------ Form  ------------------------- //
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input
+  background-color: $inputBackground
+  border: 1px solid $inputBorder
+  border-top: 1px solid darken($inputBorder, 5%)
+  +box-shadow(rgba(0,0,0,0.1) 0px 1px 2px 0px inset)
+  +single-transition(all, 0.2s, linear)
+  // Hover state
+  &:hover
+    background-color: darken($inputBackground, 0.7%)
+    border: 1px solid darken($inputBorder, 2%)
+    border-top: 1px solid darken($inputBorder, 7%)
+    +box-shadow(rgba(0,0,0,0.2) 0px 1px 2px 0px inset)
+  // Focus state
+  &:focus
+    border: 1px solid darken($inputBorder, 3%)
+    border-top: 1px solid darken($inputBorder, 8%)
+    +box-shadow(rgba(0,0,0,0.3) 0px 1px 2px 0px inset)
+
+// ------------------------ DropDown  ------------------------- //
+
+.dropdown-menu
+  +border-radius($baseBorderRadius)
+  +box-shadow(none)
+
+
+// Hover/Focus state
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-submenu:hover > a,
+.dropdown-submenu:focus > a
+  +single-transition(all, 0.3s, ease)
+  text-decoration: none
+  color: $dropdownLinkColorHover
+  background-image: none
+  background-color: $dropdownLinkBackgroundHover
+
+// Active state
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus
+  +single-transition(all, 0.3s, ease)
+  color: $dropdownLinkColorActive
+  text-decoration: none
+  outline: 0
+  background-image: none
+  background-color: $dropdownLinkBackgroundHover

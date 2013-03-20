@@ -1,0 +1,12 @@
+.wizard
+  %ul.cart-navigation.steps
+    - state_index = @states.index(@cart.state)
+
+    - @states.each_with_index do |state, index|
+      - complete = index < @states.index(@cart.state)
+      - current_state = state == @cart.state
+      %li{ class: (current_state ? "active" : (state_index > index ? "complete" : "")), data: { state: state, url: (set_cart_state_path(state) if complete) } }
+        %span.badge{ class: (current_state ? "badge-info" : (complete ? "badge-success" : "")) }
+          = index + 1
+        = t("glysellin.cart.states.#{ state }")
+        %span.chevron

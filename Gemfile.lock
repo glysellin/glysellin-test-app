@@ -1,5 +1,7 @@
-PATH
-  remote: /Users/vala/Documents/development/ruby/gems/glysellin
+GIT
+  remote: git://github.com/vala/glysellin.git
+  revision: cb2e2234ef0308aca9edf931f93d34f23a8b357b
+  branch: order_refactoring
   specs:
     glysellin (0.3.1)
       activemerchant
@@ -9,6 +11,13 @@ PATH
       rails (~> 3.2.0)
       simple_form
       state_machine
+
+GIT
+  remote: git://github.com/vala/rails_admin_glyph_theme.git
+  revision: 1959b82217a39b2c6cf164cf336bb05e7ee3cdaa
+  specs:
+    rails_admin_glyph_theme (0.0.1)
+      rails (~> 3.2.12)
 
 GEM
   remote: https://rubygems.org/
@@ -53,17 +62,30 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.3.0.1)
+    bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
     builder (3.0.4)
-    cocaine (0.4.2)
+    chunky_png (1.2.7)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.1)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.6.1)
+    coffee-script-source (1.6.2)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
+    compass-rgbapng (0.1.1)
+      chunky_png (>= 0.8.0)
+      compass (>= 0.10.0)
     country_select (1.1.3)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
@@ -76,6 +98,7 @@ GEM
     font-awesome-sass-rails (3.0.2.2)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
+    fssm (0.2.10)
     haml (4.0.0)
       tilt
     hike (1.2.1)
@@ -99,15 +122,15 @@ GEM
     mime-types (1.21)
     money (5.1.1)
       i18n (~> 0.6.0)
-    multi_json (1.6.1)
+    multi_json (1.7.1)
     nested_form (0.3.1)
-    nokogiri (1.5.6)
+    nokogiri (1.5.8)
     orm_adapter (0.4.0)
-    paperclip (3.4.0)
+    paperclip (3.4.1)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-      cocaine (~> 0.4.0)
+      cocaine (~> 0.5.0)
       mime-types
     polyglot (0.3.3)
     rack (1.4.5)
@@ -128,7 +151,7 @@ GEM
       activesupport (= 3.2.12)
       bundler (~> 1.0)
       railties (= 3.2.12)
-    rails_admin (0.4.5)
+    rails_admin (0.4.6)
       bootstrap-sass (~> 2.2)
       builder (~> 3.0)
       coffee-rails (~> 3.1)
@@ -153,9 +176,9 @@ GEM
     rake (10.0.3)
     rdoc (3.12.2)
       json (~> 1.4)
-    ref (1.0.2)
+    ref (1.0.3)
     remotipart (1.0.5)
-    safe_yaml (0.8.5)
+    safe_yaml (0.8.6)
     sass (3.2.7)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -175,7 +198,7 @@ GEM
       libv8 (~> 3.11.8.12)
       ref
     thor (0.17.0)
-    tilt (1.3.5)
+    tilt (1.3.6)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -190,13 +213,17 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   coffee-rails (~> 3.2.1)
+  compass-rails
+  compass-rgbapng
   devise
   glysellin!
   jquery-rails
   paperclip
   rails (= 3.2.12)
   rails_admin
+  rails_admin_glyph_theme!
   sass-rails (~> 3.2.3)
   simple_form
   sqlite3

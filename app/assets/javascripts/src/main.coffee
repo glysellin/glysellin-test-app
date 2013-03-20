@@ -6,3 +6,6 @@ $ ->
   $('.cart-container').glysellinCart()
   $('.products-recap-form.editable').glysellinAsyncCart()
   $('.addresses-fields-container').glysellinAddress()
+
+  $('.wizard ul.steps > li[data-url]').on "click", (e) ->
+    window.location.href = $(this).data('url')

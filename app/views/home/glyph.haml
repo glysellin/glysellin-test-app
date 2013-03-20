@@ -1,0 +1,90 @@
+.row
+  .span12
+    .page-header
+      %h1
+        Glyph Custom
+.row
+  .span12
+    %h2.page-header
+      Dropdown
+
+  .span12
+    .navbar
+      .navbar-inner
+        .container
+          .nav-collapse.collapse.navbar-responsive-collapse
+            %ul.nav
+              %li.active
+                %a{:href => "#"} Home
+              %li
+                %a{:href => "#"} Link
+              %li
+                %a{:href => "#"} Link
+              %li.subnav-content
+                %a{:href => "#"}
+                  Custom Dropdown
+                  %b.caret
+                %ul.subnav
+                  %li.subnav-item
+                    %a.subnav-btn{:href => "#"} Action
+                  %li.subnav-item
+                    %a.subnav-btn{:href => "#"} Another action
+                  %li.subnav-item
+                    %a.subnav-btn{:href => "#"} Something else here
+                  %li.subnav-item
+                    %a.subnav-btn{:href => "#"} Separated link
+                  %li.subnav-item
+                    %a.subnav-btn{:href => "#"} One more separated link
+
+
+            %form.navbar-search.pull-left{:action => ""}
+              .input-append.search
+                %input.input-medium{:placeholder => "Search", :type => "text"}/
+                %button.btn
+                  %i.icon-search
+
+            %ul.nav.pull-right
+              %li
+                %a{:href => "#"} Link
+              %li.divider-vertical
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                  Dropdown
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "#"} Action
+                  %li
+                    %a{:href => "#"} Another action
+                  %li
+                    %a{:href => "#"} Something else here
+                  %li.divider
+                  %li
+                    %a{:href => "#"} Separated link
+          / /.nav-collapse
+      / /navbar-inner
+
+.row
+  .span12
+    %h2.page-header
+      Social icons
+
+  .span12
+    %p.well
+      cd app/assets
+      %br
+      compass sprite "images/socials/*.png" --force
+    %h3
+      default transition
+    .row
+      .span1
+        = link_to "Facebook", "https://www.facebook.com/pages/HEDONICE/491883184183746?fref=ts", target: "_blank", class: "link-img socials-facebook"
+      .span1
+        = link_to "Twitter", "https://twitter.com/HEDONICE", target: "_blank", class: "link-img socials-twitter"
+      .span1
+        = link_to "Youtube", "http://www.youtube.com/user/HedoniceTV", target: "_blank", class: "link-img socials-youtube"
+      .span1
+        = link_to "Pinterest", "http://pinterest.com/hedonice", target: "_blank", class: "link-img socials-pinterest"
+
+      %br
+      %br

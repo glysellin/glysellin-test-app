@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   before_filter :init
 
   def init
-    @cart = Glysellin::Cart.new(session['glysellin.cart'], customer: current_user)
+    @cart = Glysellin::Cart.new(session['glysellin.cart'])
   end
 end

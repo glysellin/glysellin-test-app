@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require_tree ./pre
 //= require glysellin/base
 //= require_tree ./lib
 //= require_tree ./src
