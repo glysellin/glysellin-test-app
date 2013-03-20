@@ -1,0 +1,110 @@
+@import "compass/utilities/sprites/base";
+
+// General Sprite Defaults
+// You can override them before you import this file.
+$socials-sprite-base-class : ".socials-sprite" !default;
+$socials-sprite-dimensions : false !default;
+$socials-position          : 0% !default;
+$socials-spacing           : 0 !default;
+$socials-repeat            : no-repeat !default;
+$socials-prefix            : '' !default;
+$socials-clean-up          : true !default;
+$socials-layout            : vertical !default;
+$socials-inline            : false !default;
+
+  
+ // These variables control the generated sprite output
+ // You can override them selectively before you import this file.
+ 
+   $socials-facebook-position: $socials-position !default;
+   $socials-facebook-spacing:  $socials-spacing !default;
+   $socials-facebook-repeat:   $socials-repeat !default;
+ 
+   $socials-pinterest-position: $socials-position !default;
+   $socials-pinterest-spacing:  $socials-spacing !default;
+   $socials-pinterest-repeat:   $socials-repeat !default;
+ 
+   $socials-twitter-position: $socials-position !default;
+   $socials-twitter-spacing:  $socials-spacing !default;
+   $socials-twitter-repeat:   $socials-repeat !default;
+ 
+   $socials-youtube-position: $socials-position !default;
+   $socials-youtube-spacing:  $socials-spacing !default;
+   $socials-youtube-repeat:   $socials-repeat !default;
+ 
+
+ $socials-sprites: sprite-map("socials/*.png",
+ 
+   $socials-facebook-position: $socials-facebook-position, 
+   $socials-facebook-spacing:  $socials-facebook-spacing, 
+   $socials-facebook-repeat:   $socials-facebook-repeat,
+ 
+   $socials-pinterest-position: $socials-pinterest-position, 
+   $socials-pinterest-spacing:  $socials-pinterest-spacing, 
+   $socials-pinterest-repeat:   $socials-pinterest-repeat,
+ 
+   $socials-twitter-position: $socials-twitter-position, 
+   $socials-twitter-spacing:  $socials-twitter-spacing, 
+   $socials-twitter-repeat:   $socials-twitter-repeat,
+ 
+   $socials-youtube-position: $socials-youtube-position, 
+   $socials-youtube-spacing:  $socials-youtube-spacing, 
+   $socials-youtube-repeat:   $socials-youtube-repeat,
+ 
+ $layout   : $socials-layout,
+ $cleanup  : $socials-clean-up,
+ $spacing  : $socials-spacing,
+ $position : $socials-position
+ );
+
+
+// All sprites should extend this class
+// The socials-sprite mixin will do so for you.
+@if $socials-inline {
+  #{$socials-sprite-base-class} {
+    background-image: inline-sprite($socials-sprites);
+  } 
+} @else {
+  #{$socials-sprite-base-class} {
+    background: $socials-sprites no-repeat;
+  }
+}
+//sass functions to return the dimensions of a sprite image as units
+
+  @function socials-sprite-width($name) {
+    $file: sprite_file($socials-sprites, $name);
+    @return image-width($file);
+  }
+
+  @function socials-sprite-height($name) {
+    $file: sprite_file($socials-sprites, $name);
+    @return image-height($file);
+  }
+
+
+// Use this to set the dimensions of an element
+// based on the size of the original image.
+@mixin socials-sprite-dimensions($name) {
+  @include sprite-dimensions($socials-sprites, $name)
+}
+
+// Move the background position to display the sprite.
+@mixin socials-sprite-position($name, $offset-x: 0, $offset-y: 0) {
+  @include sprite-background-position($socials-sprites, $name, $offset-x, $offset-y)
+}
+
+// Extends the sprite base class and set the background position for the desired sprite.
+// It will also apply the image dimensions if $dimensions is true.
+@mixin socials-sprite($name, $dimensions: $socials-sprite-dimensions, $offset-x: 0, $offset-y: 0) {
+  @extend #{$socials-sprite-base-class};
+  @include sprite($socials-sprites, $name, $dimensions, $offset-x, $offset-y)
+}
+
+@mixin socials-sprites($sprite-names, $dimensions: $socials-sprite-dimensions, $prefix: sprite-map-name($socials-sprites), $offset-x: 0, $offset-y: 0) {
+  @include sprites($socials-sprites, $sprite-names, $socials-sprite-base-class, $dimensions, $prefix, $offset-x, $offset-y)
+}
+
+// Generates a class for each sprited image.
+@mixin all-socials-sprites($dimensions: $socials-sprite-dimensions, $prefix: sprite-map-name($socials-sprites), $offset-x: 0, $offset-y: 0) {
+  @include socials-sprites(facebook pinterest twitter youtube, $dimensions, $prefix, $offset-x, $offset-y);
+}

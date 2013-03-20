@@ -10,10 +10,14 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
+  gem "compass-rails"
+  gem "compass-rgbapng", require: "rgbapng"
+  gem "bootstrap-sass"
 end
 
 gem 'jquery-rails'
 
+gem 'rails_admin_glyph_theme', git: 'git://github.com/vala/rails_admin_glyph_theme.git'
 gem 'rails_admin'
 gem 'paperclip'
 gem 'devise'

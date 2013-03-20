@@ -1,0 +1,148 @@
+.row
+  .span12
+    %h1.page-header
+      Fuel UX
+  .span12
+    .well
+      %form
+        .row
+          .span3
+            %h3
+              Checkbox
+            %label.checkbox.checkbox-custom
+              %input#myCheckbox{:checked => "checked", :type => "checkbox"}/
+              %i.checkbox
+              Enabled
+            %label.checkbox.checkbox-custom
+              %input{:type => "checkbox"}/
+              %i.checkbox
+              Enabled
+            %label.checkbox.checkbox-custom
+              %input{:checked => "checked", :disabled => "disabled", :type => "checkbox"}/
+              %i.checkbox.checked.disabled
+              Disabled
+            %label.checkbox.checkbox-custom
+              %input{:disabled => "disabled", :type => "checkbox"}/
+              %i.checkbox.disabled
+              Disabled
+          .span3
+            %h3
+              Radio
+            %label.radio.radio-custom
+              %input#myRadio{:checked => "checked", :name => "radioA", :type => "radio"}/
+              %i.radio.checked
+              Enabled
+            %label.radio.radio-custom
+              %input{:name => "radioA", :type => "radio"}/
+              %i.radio
+              Enabled
+            %label.radio.radio-custom
+              %input{:checked => "checked", :disabled => "disabled", :name => "radioB", :type => "radio"}/
+              %i.radio.checked.disabled
+              Disabled
+            %label.radio.radio-custom
+              %input{:disabled => "disabled", :name => "radioB", :type => "radio"}/
+              %i.radio.disabled
+              Disabled
+          .span3
+            %h3
+              ComboBox
+            .input-append.dropdown.combobox
+              %input.span2{:type => "text"}/
+              %button.btn{"data-toggle" => "dropdown"}
+                %i.caret
+              %ul.dropdown-menu
+                %li
+                  %a{:href => "#"} Item One
+                %li
+                  %a{:href => "#"} Item Two
+                %li
+                  %a{:href => "#"} Item Three
+                %li.divider
+                %li
+                  %a{:href => "#"} Item After Divider
+
+          .span2
+            %h3
+              Spinner
+            .spinner
+              %input.input-mini.spinner-input{:type => "text"}/
+              .spinner-buttons.btn-group.btn-group-vertical
+                %button.btn.spinner-up
+                  %i.icon-chevron-up
+                %button.btn.spinner-down
+                  %i.icon-chevron-down
+      .row
+        .span3
+          %h3
+            Select
+          .select.btn-group{"data-resize" => "auto"}
+            %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
+              %span.dropdown-label
+              %span.caret
+            %ul.dropdown-menu
+              %li{"data-value" => "1"}
+                %a{:href => "#"} One
+              %li{"data-value" => "2"}
+                %a{:href => "#"} Two
+              %li{"data-selected" => "true", "data-value" => "3"}
+                %a{:href => "#"} Three
+              %li{"data-fizz" => "buzz", "data-value" => "4"}
+                %a{:href => "#"} Four
+        .span3
+          %h3
+            Search
+          .input-append.search
+            %input.input-medium{:placeholder => "Search", :type => "text"}/
+            %button.btn
+              %i.icon-search
+      .row
+        .span11
+          %h3
+            Wizard
+          .wizard
+            %ul.steps
+              %li.active{"data-target" => "#step1"}
+                %span.badge.badge-info> 1
+                Step 1
+                %span.chevron
+              %li{"data-target" => "#step2"}
+                %span.badge> 2
+                Step 2
+                %span.chevron
+              %li{"data-target" => "#step3"}
+                %span.badge> 3
+                Step 3
+                %span.chevron
+              %li{"data-target" => "#step4"}
+                %span.badge> 4
+                Step 4
+                %span.chevron
+              %li{"data-target" => "#step5"}
+                %span.badge> 5
+                Step 5
+                %span.chevron
+            .actions
+              %button.btn.btn-mini.btn-prev
+                %i.icon-arrow-left>
+                Prev
+              %button.btn.btn-mini.btn-next{"data-last" => "Finish"}
+                Next
+                %i.icon-arrow-right
+          .step-content
+            #step1.step-pane.active This is step 1
+            #step2.step-pane This is step 2
+            #step3.step-pane This is step 3
+            #step4.step-pane This is step 4
+            #step5.step-pane This is step 5
+
+.row
+  .span12
+    %h2.page-header
+      Custom File Upload
+  .span12
+    .well
+      .row
+        .span3
+          %input{ type: 'file' }
+

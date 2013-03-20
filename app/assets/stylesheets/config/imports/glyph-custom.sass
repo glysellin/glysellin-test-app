@@ -1,0 +1,271 @@
+//***************************************************************
+//    Imports
+//***************************************************************
+// --- Importing Bootstrap variables for colors and orther --- //
+@import "bootstrap-variables"
+
+// ------------------------ Compass  ------------------------- //
+@import "compass/css3/text-shadow"
+@import "compass/css3/border-radius"
+@import "compass/css3/opacity"
+@import "compass/css3/border-radius"
+@import "compass/css3/transition"
+@import "compass/css3/inline-block"
+
+//***************************************************************
+//    Glyph Custom
+//***************************************************************
+
+// ------------------------ Shared  ------------------------- //
+
+a
+  &:hover
+    text-decoration: none
+
+  &.block
+    display: block
+
+  &.link-img
+    text-indent: -999em
+    display: block
+    margin: auto
+
+.clear-button
+  background: none
+  border: none
+  +box-shadow(none)
+  +text-shadow(none)
+  +border-radius(0px)
+  &:hover
+    background: none
+
+// ------------------------ Socials Icons  ------------------------- //
+
+[class^="socials-"], [class*=" socials-"]
+  +single-transition(background-position-y, 0.3s, ease-in-out)
+  width: 33px
+  height: 33px
+  &:hover
+    background-position-y: -45px
+
+.sprites-opacity-transition
+  position: relative
+  [class^="sprites-"], [class*=" sprites-"]
+    position: absolute
+  [class^="sprites-active"], [class*=" sprites-active"]
+    z-index: 1
+    +single-transition(opacity, 0.3s, ease)
+    +opacity(1)
+    &:hover
+      +opacity(0)
+  [class^="sprites-hover"], [class*=" sprites-hover"]
+    z-index: 0
+
+// ------------------------ Dropdown  ------------------------- //
+
+.subnav-content
+  position: relative
+  display: block
+  list-style: none
+  a .caret
+    margin-top: 8px
+  &:hover
+    .subnav
+      +opacity(1)
+      .subnav-item
+        height: 30px
+        overflow: visible
+        padding: 0
+
+
+  .subnav-btn
+    display: block
+    white-space: nowrap
+    color: $navbarLinkColor
+    padding: 5px 10px
+    +single-transition(all, 0.3s, ease)
+    &:hover
+      color: $navbarLinkColorHover
+      background-color: $navbarLinkBackgroundHover
+
+  .subnav
+    position: absolute
+    list-style: none
+    top: auto
+    left: 0
+    margin: 0
+    z-index: 1000
+    +opacity(0)
+    +single-transition(opacity, 0.25s, ease, 0.1s)
+    background-color: $navbarBackground
+    .subnav-item
+      height: 0
+      overflow: hidden
+      padding: 0
+      +single-transition(height, 0.25s, ease, 0.1s)
+
+
+
+// ------------------------ Select  ------------------------- //
+// .selector
+
+//   // display: inline-block
+//   // height: $baseLineHeight
+//   // padding: 4px 6px
+//   // margin-bottom: $baseLineHeight / 2
+//   // font-size: $baseFontSize
+//   // line-height: $baseLineHeight
+//   // color: $gray
+//   // +border-radius($inputBorderRadius)
+//   // vertical-align: middle
+//   // background-color: $inputBackground
+//   // border: 1px solid $inputBorder
+//   // +box-shadow(inset 0 1px 1px rgba(0,0,0,.075))
+//   // +transition(border linear .2s, box-shadow linear .2s)
+//   // &:focus
+//   //   border-color: rgba(82,168,236,.8)
+//   //   outline: 0
+//   //   outline: thin dotted \9
+//   //   +box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6))
+
+//   position: relative
+//   overflow: hidden
+//   // display: block !important
+//   // padding: 4px 6px
+//   display: inline-block
+//   +ie7-inline-block()
+//   padding: 4px 12px
+//   margin-bottom: 0 // For input.btn
+//   font-size: $baseFontSize
+//   line-height: $baseLineHeight
+//   text-align: center
+//   vertical-align: middle
+//   cursor: pointer
+//   +buttonBackground($btnBackground, $btnBackgroundHighlight, $grayDark, 0 1px 1px rgba(255,255,255,.75))
+//   background-image: none
+//   border: 1px solid $btnBorder
+//   *border: 0 // Remove the border to prevent IE7's black border on input:focus
+//   border-bottom-color: darken($btnBorder, 10%)
+//   +border-radius($baseBorderRadius)
+//   +ie7-restore-left-whitespace() // Give IE7 some love
+//   +box-shadow(inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05))
+
+//   // Hover/focus state
+//   &:hover,
+//   &:focus
+//     color: $grayDark
+//     text-decoration: none
+//     background-position: 0 -15px
+
+//     // transition is only when going to hover/focus, otherwise the background
+//     // behind the gradient (there for IE<=9 fallback) gets mismatched
+//     +transition(background-position .1s linear)
+
+
+//   // Focus state for keyboard and accessibility
+//   &:focus
+//     +tab-focus()
+
+
+//   // Active state
+//   &.active,
+//   &:active
+//     background-image: none
+//     outline: 0
+//     +box-shadow(inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05))
+
+//   span
+//     // height: $inputHeight
+//     // background: $Glyph-select-down
+//     padding-right: 10px
+//     display: block
+//     overflow: hidden
+//     white-space: nowrap
+//   select
+//     height: 100%
+//     position: absolute
+//     width: 100%
+//     top: 0px
+//     left: 0px
+//   &.hover
+//     span
+//       // background: $Glyph-select-down-hover
+
+// ------------------------ File Upload  ------------------------- //
+
+// input#upload
+//   background: #aaaaaa
+//   padding: .4em 1.2em
+//   border: 1px solid #aaa
+//   color: #222
+//   font-size: 1.2em
+//   font-weight: bold
+//   -moz-border-radius: 5px
+//   -webkit-border-radius: 5px
+//   border-radius: 5px
+//   cursor: pointer
+//   margin: 2em 0
+//   &:hover
+//     background: #eee
+//     color: #111
+//     border-color: #777
+
+/*custom upload elements */
+
+.customfile-input
+  position: absolute
+  height: 100px
+  cursor: pointer
+  background: transparent
+  border: 0
+  +opacity(0)
+  z-index: 999
+
+.customfile
+  cursor: pointer
+  overflow: hidden
+  position: relative
+  margin-bottom: $baseLineHeight / 2
+
+.customfile-disabled
+  +opacity(5)
+  cursor: default
+
+.customfile-feedback
+  display: block
+  min-width: 206px
+  padding: 4px 6px
+  +border-radius($inputBorderRadius)
+  background-color: $inputDisabledBackground
+  border: 1px solid $inputBorder
+  border-top: 1px solid darken($inputBorder, 5%)
+  +box-shadow(rgba(0,0,0,0.1) 0px 1px 2px 0px inset)
+  +single-transition(all, 0.2s, linear)
+  height: $inputHeight - 10
+  // Hover state
+  &:hover
+    background-color: darken($inputBackground, 0.7%)
+    border: 1px solid darken($inputBorder, 2%)
+    border-top: 1px solid darken($inputBorder, 7%)
+    +box-shadow(rgba(0,0,0,0.2) 0px 1px 2px 0px inset)
+  // Focus state
+  &:focus
+    border: 1px solid darken($inputBorder, 3%)
+    border-top: 1px solid darken($inputBorder, 8%)
+    +box-shadow(rgba(0,0,0,0.3) 0px 1px 2px 0px inset)
+
+.customfile-button
+  float: right
+  width: 30px
+
+.customfile-feedback-populated
+  font-style: normal
+  font-weight: bold
+  background-color: darken($inputDisabledBackground, 5%)
+  height: $inputHeight - 10
+
+.customfile-hover .customfile-button
+  +box-shadow(rgba(0, 0 , 0 , 0.1) 0px 1px 2px 0px inset)
+
+.customfile-focus .customfile-button
+  +box-shadow(rgba(0, 0 , 0 , 0.1) 0px 1px 2px 0px inset)
