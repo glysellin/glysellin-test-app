@@ -1,18 +1,27 @@
 GlysellinTest::Application.routes.draw do
+<<<<<<< HEAD
 
 
 
 
+=======
+  
+>>>>>>> c968edb1dab3fc8c8787958b741d117f4d613982
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
 
   root to: "home#index"
 
+<<<<<<< HEAD
   get 'bootstrap' => 'home#bootstrap', as: 'bootstrap'
   get 'fuelux' => 'home#fuelux', as: 'fuelux'
   get 'glyph' => 'home#glyph', as: 'glyph'
 
+=======
+  resource :user, only: [:show, :edit, :update]
+  
+>>>>>>> c968edb1dab3fc8c8787958b741d117f4d613982
   glysellin_at '/shop'
 
   # The priority is based upon order of creation:

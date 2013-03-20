@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/vala/glysellin.git
-  revision: 0cdb01ce68b2b0a625ca4200de4ec0260922f6d8
+  revision: cedb353e0b97a27b4c9deabd706d356cc67c5427
   specs:
     glysellin (0.3.1)
       activemerchant
@@ -64,7 +64,10 @@ GEM
     bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
     builder (3.0.4)
+<<<<<<< HEAD
     chunky_png (1.2.7)
+=======
+>>>>>>> c968edb1dab3fc8c8787958b741d117f4d613982
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
