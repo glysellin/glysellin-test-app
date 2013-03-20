@@ -17,7 +17,8 @@ gem 'jquery-rails'
 gem 'rails_admin'
 gem 'paperclip'
 gem 'devise'
+gem 'simple_form'
 
-gem 'glysellin', git: "git://github.com/vala/glysellin.git"
-# gem 'glysellin', path: "/Users/vala/Documents/development/ruby/gems/glysellin"
+# gem 'glysellin', git: "git://github.com/vala/glysellin.git"
+gem 'glysellin', path: "/Users/vala/Documents/development/ruby/gems/glysellin"
 # gem 'glysellin', path: "/Users/damien/glyph/gems/glysellin"
