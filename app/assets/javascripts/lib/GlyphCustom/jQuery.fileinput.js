@@ -74,7 +74,7 @@ $.fn.customFileInput = function(){
 		.mousemove(function(e){
 			fileInput.css({
 				'left': e.pageX - upload.offset().left - fileInput.outerWidth() + 20, //position right side 20px right of cursor X)
-				'top': e.pageY - upload.offset().top - $(window).scrollTop() - 3
+				'top': e.pageY - upload.offset().top  - 20
 			});
 		})
 		.insertAfter(fileInput); //insert after the input

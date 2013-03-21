@@ -56,12 +56,14 @@
     +single-transition(all, 0.1s, linear)
     outline: none
     outline: 0
+    +box-shadow(rgba(0, 0 , 0 , 0.1) 0px 1px 2px 0px inset)
   // Active state
   &.active,
   &:active
     background-image: none
     outline: 0
-    +box-shadow(rgba(0, 0 , 0 , 0.1) 0px 1px 2px 0px inset)
+    +box-shadow(rgba(0, 0 , 0 , 0.3) 0px 1px 3px 0px inset)
+
 
 // ------------------------ Form  ------------------------- //
 
@@ -81,8 +83,7 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"],
-.uneditable-input
-  background-color: $inputBackground
+.uneditable-input,
   border: 1px solid $inputBorder
   border-top: 1px solid darken($inputBorder, 5%)
   +box-shadow(rgba(0,0,0,0.1) 0px 1px 2px 0px inset)
@@ -99,12 +100,20 @@ input[type="color"],
     border-top: 1px solid darken($inputBorder, 8%)
     +box-shadow(rgba(0,0,0,0.3) 0px 1px 2px 0px inset)
 
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly]
+  &:hover
+    background-color: $inputDisabledBackground
+
 // ------------------------ DropDown  ------------------------- //
 
 .dropdown-menu
   +border-radius($baseBorderRadius)
   +box-shadow(none)
-
 
 // Hover/Focus state
 .dropdown-menu > li > a:hover,
