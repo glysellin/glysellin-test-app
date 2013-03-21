@@ -8,10 +8,28 @@
 @import "compass/css3/text-shadow"
 @import "compass/css3/border-radius"
 @import "compass/css3/opacity"
+@import "compass/css3/inline-block"
 
 //***************************************************************
 //    FuelUX Overriding by Glyph
 //***************************************************************
+
+@mixin fontAwesome
+  font-family: FontAwesome
+  font-weight: normal
+  font-style: normal
+  text-decoration: inherit
+  -webkit-font-smoothing: antialiased
+  /* sprites.less reset */
+  display: inline
+  width: auto
+  height: auto
+  line-height: normal
+  vertical-align: baseline
+  background-image: none
+  background-position: 0% 0%
+  background-repeat: repeat
+  margin-top: 0
 
 // ------------------------ Checkbox  ------------------------- //
 
@@ -22,28 +40,20 @@
 
 .checkbox-custom
   input[type=checkbox]
-    display: none
-  i
-    font-family: FontAwesome
-    font-weight: normal
-    font-style: normal
-    text-decoration: inherit
-    -webkit-font-smoothing: antialiased
-    /* sprites.less reset */
-    display: inline
-    width: auto
-    height: auto
-    line-height: normal
-    vertical-align: baseline
-    background-image: none
-    background-position: 0% 0%
-    background-repeat: repeat
-    margin-top: 0
+    +opacity(0)
+
+  i.checkbox
+    +fontAwesome
+    padding-left: 0
+    margin-left: -20px
     &:before
       content: "\f096"
     &.checked::before
-      content: "\f046"
       /* checked
+      content: "\f046"
+    &.focus
+      /* focus
+      +text-shadow(rgba(0, 0, 0, 0.3) 0px 0px 3px)
     &.disabled
       /* disabled
       color: $grayLight
@@ -52,7 +62,7 @@
         /* disabled and checked
 
   &:hover i
-    +text-shadow(0px 0px 1px rgba(0,0,0, 0.3))
+    +text-shadow(rgba(0, 0, 0, 0.3) 0px 0px 3px)
     &.checked
       /* checked
     &.disabled
@@ -67,28 +77,19 @@
 
 .radio-custom
   input[type=radio]
-    display: none
+    +opacity(0)
   i
-    font-family: FontAwesome
-    font-weight: normal
-    font-style: normal
-    text-decoration: inherit
-    -webkit-font-smoothing: antialiased
-    /* sprites.less reset */
-    display: inline
-    width: auto
-    height: auto
-    line-height: normal
-    vertical-align: baseline
-    background-image: none
-    background-position: 0% 0%
-    background-repeat: repeat
-    margin-top: 0
+    +fontAwesome
+    padding-left: 0
+    margin-left: -20px
     &:before
       content: "\f10c"
     &.checked::before
-      content: "\f111"
       /* checked
+      content: "\f111"
+    &.focus
+      /* focus
+      +text-shadow(rgba(0, 0, 0, 0.3) 0px 0px 3px)
     &.disabled
       /* disabled
       color: $grayLight
@@ -96,9 +97,8 @@
       &.checked
         /* disabled and checked */
 
-.radio-custom:hover
-  i
-    +text-shadow(0px 0px 1px rgba(0,0,0, 0.3))
+  &:hover i
+    +text-shadow(rgba(0, 0, 0, 0.3) 0px 0px 3px)
     &.checked
       /* checked */
     &.disabled
@@ -113,7 +113,6 @@
 
 .spinner
   input
-    width: 43px
     float: left
   .btn
     position: relative
@@ -140,18 +139,46 @@
     top: 2px
     height: 13px
 
+// ------------------------ Search  ------------------------- //
+
+.search
+  +inline-block
+  button.btn
+    border-radius: 0 $inputBorderRadius $inputBorderRadius 0
+    width: 40px
+
+// ------------------------ Combobox  ------------------------- //
+
+.combobox
+  +inline-block
+  a
+    font-size: $baseFontSize
+  button.btn
+    border-radius: 0 $inputBorderRadius $inputBorderRadius 0
+    width: 40px
+  .dropdown-menu
+    width: 100%
+
 // ------------------------ Select  ------------------------- //
 
 .select
-  .dropdown-label
-    padding: 0 10px 0 0
-    margin: 0
-    display: inline-block
+  .btn.dropdown-toggle
     text-align: left
-    font-weight: normal
-    color: #333
+    .caret
+      float: right
+    .dropdown-label
+      padding: 0 10px 0 0
+      margin: 0
+      +inline-block
+      text-align: left
+      font-weight: normal
+      color: #333
+  .dropdown-menu
+    width: 100%
+    a
+      padding: 4px 12px
 #selectTextSize
-  display: inline-block
+  +inline-block
   position: absolute
   visibility: hidden
   top: 0
@@ -161,7 +188,7 @@
 .pillbox
   padding: 3px
   ul
-    display: inline-block
+    +inline-block
     margin: 0
   li
     // Begin Bootstrap .label
@@ -176,7 +203,7 @@
     padding: 1px 4px 2px
     +border-radius(3px)
     // End Bootstrap .label
-    display: inline-block
+    +inline-block
     margin: 2px
     cursor: pointer
     float:left
@@ -205,20 +232,6 @@
       background-color: $green
     &.status-info
       background-color: $blue
-
-// ------------------------ Search  ------------------------- //
-
-.search
-  display: inline-block
-
-// ------------------------ Combobox  ------------------------- //
-
-.combobox
-  display: inline-block
-  a
-    font-size: $baseFontSize
-    button.btn
-      border-radius: 0 $inputBorderRadius $inputBorderRadius 0
 
 // ------------------------ Tree  ------------------------- //
 

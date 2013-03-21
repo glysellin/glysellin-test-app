@@ -193,27 +193,32 @@ a
 
 // ------------------------ File Upload  ------------------------- //
 
-// input#upload
-//   background: #aaaaaa
-//   padding: .4em 1.2em
-//   border: 1px solid #aaa
-//   color: #222
-//   font-size: 1.2em
-//   font-weight: bold
-//   -moz-border-radius: 5px
-//   -webkit-border-radius: 5px
-//   border-radius: 5px
-//   cursor: pointer
-//   margin: 2em 0
-//   &:hover
-//     background: #eee
-//     color: #111
-//     border-color: #777
+.customfile
+  cursor: pointer
+  overflow: hidden
+  position: relative
+  margin-bottom: $baseLineHeight / 2
+  /* Hover */
+  &.customfile-hover
+    .customfile-button
+      +box-shadow(rgba(0, 0 , 0 , 0.1) 0px 1px 2px 0px inset)
+  /* Focus */
+  &.customfile-focus
+    .customfile-feedback
+      border: 1px solid darken($inputBorder, 3%)
+      border-top: 1px solid darken($inputBorder, 8%)
+      +box-shadow(rgba(0,0,0,0.3) 0px 1px 2px 0px inset)
+    .customfile-button
+      +box-shadow(rgba(0, 0 , 0 , 0.1) 0px 1px 2px 0px inset)
 
-/*custom upload elements */
+/* Custom file for bootstrap
+.form-horizontal .customfile
+  margin-bottom: 0
 
 .customfile-input
   position: absolute
+  top: 0
+  left: 0
   height: 100px
   cursor: pointer
   background: transparent
@@ -221,22 +226,12 @@ a
   +opacity(0)
   z-index: 999
 
-.customfile
-  cursor: pointer
-  overflow: hidden
-  position: relative
-  margin-bottom: $baseLineHeight / 2
-
-.customfile-disabled
-  +opacity(5)
-  cursor: default
-
 .customfile-feedback
   display: block
   min-width: 206px
   padding: 4px 6px
   +border-radius($inputBorderRadius)
-  background-color: $inputDisabledBackground
+  background-color: darken($inputBackground, 0.2%)
   border: 1px solid $inputBorder
   border-top: 1px solid darken($inputBorder, 5%)
   +box-shadow(rgba(0,0,0,0.1) 0px 1px 2px 0px inset)
@@ -264,8 +259,9 @@ a
   background-color: darken($inputDisabledBackground, 5%)
   height: $inputHeight - 10
 
-.customfile-hover .customfile-button
-  +box-shadow(rgba(0, 0 , 0 , 0.1) 0px 1px 2px 0px inset)
+/* Disabled */
+.customfile-disabled
+  cursor: not-allowed
+  .customfile-feedback
+    background-color: $inputDisabledBackground
 
-.customfile-focus .customfile-button
-  +box-shadow(rgba(0, 0 , 0 , 0.1) 0px 1px 2px 0px inset)
