@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/vala/glysellin.git
-  revision: 3b3d1cb9a559f5bcdb581a23b97eb121606d74b5
+  revision: 15cc1b82cc7e9ad07ce468fda9d96affd0235889
   branch: order_refactoring
   specs:
     glysellin (0.3.1)
