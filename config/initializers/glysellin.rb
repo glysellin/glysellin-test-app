@@ -44,6 +44,18 @@ module Glysellin
     #
     # config.send_email_on_check_order_placed = true
 
+    config.mailer_subjects = {
+      customer: {
+        send_order_created_email: "Confirmation de prise en compte de vos informations personnelles",
+        send_order_paid_email: "Commande et Paiement Validés",
+        send_order_shipped_email: "Votre commande a été expédiée"
+      },
+      admin: {
+        send_order_paid_email: "Une nouvelle commande a été validée et payée sur le site",
+        send_check_order_created_email: "Une commande par chèque a été passée sur le site"
+      }
+    }
+
     # Set steps order to be used while using automatic order process
     #
     # config.step_routes = {

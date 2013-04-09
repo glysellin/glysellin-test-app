@@ -10,6 +10,9 @@ GlysellinTest::Application.routes.draw do
   
   glysellin_at '/shop'
 
+  mount GlysellinParentApi::Engine => "/api", :as => "api" 
+  mount GlysellinChildApi::Engine => "/api", :as => "api" 
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

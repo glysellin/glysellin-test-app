@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/vala/glysellin.git
-  revision: cedb353e0b97a27b4c9deabd706d356cc67c5427
+  revision: 750d517ca2c965bc6209727c272de40ea1c51686
   specs:
     glysellin (0.3.1)
       activemerchant
@@ -10,6 +10,20 @@ GIT
       rails (~> 3.2.0)
       simple_form
       state_machine
+
+PATH
+  remote: /Users/damien/glyph/gems/glysellin_child_api
+  specs:
+    glysellin_child_api (0.0.1)
+      rails (~> 3.2.0)
+
+PATH
+  remote: /Users/damien/glyph/gems/glysellin_parent_api
+  specs:
+    glysellin_parent_api (0.0.1)
+      draper (~> 1.0)
+      nestful
+      rails (~> 3.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -74,6 +88,10 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
+    draper (1.2.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0.3)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -105,7 +123,9 @@ GEM
       i18n (~> 0.6.0)
     multi_json (1.7.1)
     nested_form (0.3.1)
-    nokogiri (1.5.7)
+    nestful (0.0.8)
+      activesupport (>= 3.0.0.beta)
+    nokogiri (1.5.8)
     orm_adapter (0.4.0)
     paperclip (3.4.1)
       activemodel (>= 3.0.0)
@@ -159,6 +179,7 @@ GEM
       json (~> 1.4)
     ref (1.0.2)
     remotipart (1.0.5)
+    request_store (1.0.5)
     safe_yaml (0.8.5)
     sass (3.2.7)
     sass-rails (3.2.6)
@@ -197,6 +218,8 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   glysellin!
+  glysellin_child_api!
+  glysellin_parent_api!
   jquery-rails
   paperclip
   rails (= 3.2.12)
