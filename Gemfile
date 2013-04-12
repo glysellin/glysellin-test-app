@@ -20,7 +20,6 @@ gem 'devise'
 
 
 gem 'glysellin', git: "git://github.com/vala/glysellin.git"
-gem 'glysellin_parent_api', path: "/Users/damien/glyph/gems/glysellin_parent_api"
-gem 'glysellin_child_api', path: "/Users/damien/glyph/gems/glysellin_child_api"
+gem 'restful_sync', path: "/Users/damien/glyph/gems/restful_sync"
 # gem 'glysellin', path: "/Users/vala/Documents/development/ruby/gems/glysellin"
 # gem 'glysellin', path: "/Users/damien/glyph/gems/glysellin"

@@ -1,5 +1,7 @@
 GlysellinTest::Application.routes.draw do
   
+  mount RestfulSync::Engine => '/api', :as => 'api' 
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
@@ -9,9 +11,6 @@ GlysellinTest::Application.routes.draw do
   resource :user, only: [:show, :edit, :update]
   
   glysellin_at '/shop'
-
-  mount GlysellinParentApi::Engine => "/api", :as => "api" 
-  mount GlysellinChildApi::Engine => "/api", :as => "api" 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

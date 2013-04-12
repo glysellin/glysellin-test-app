@@ -12,17 +12,11 @@ GIT
       state_machine
 
 PATH
-  remote: /Users/damien/glyph/gems/glysellin_child_api
+  remote: /Users/damien/glyph/gems/restful_sync
   specs:
-    glysellin_child_api (0.0.1)
-      rails (~> 3.2.0)
-
-PATH
-  remote: /Users/damien/glyph/gems/glysellin_parent_api
-  specs:
-    glysellin_parent_api (0.0.1)
+    restful_sync (0.0.1)
       draper (~> 1.0)
-      nestful
+      nestful (>= 1.0.0.rc2)
       rails (~> 3.2.0)
 
 GEM
@@ -123,8 +117,7 @@ GEM
       i18n (~> 0.6.0)
     multi_json (1.7.1)
     nested_form (0.3.1)
-    nestful (0.0.8)
-      activesupport (>= 3.0.0.beta)
+    nestful (1.0.0.rc2)
     nokogiri (1.5.8)
     orm_adapter (0.4.0)
     paperclip (3.4.1)
@@ -218,12 +211,11 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   glysellin!
-  glysellin_child_api!
-  glysellin_parent_api!
   jquery-rails
   paperclip
   rails (= 3.2.12)
   rails_admin
+  restful_sync!
   sass-rails (~> 3.2.3)
   sqlite3
   therubyracer
