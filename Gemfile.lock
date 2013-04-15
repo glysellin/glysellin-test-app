@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: git://github.com/vala/restful_sync.git
-  revision: ae8ef8f0b70946743752f334cde2071e6f358405
+  revision: be5e32617118798f145cd8ae2283b06a21d453d1
   specs:
     restful_sync (0.0.1)
       draper (~> 1.0)
