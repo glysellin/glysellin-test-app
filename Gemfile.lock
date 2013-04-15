@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/vala/glysellin.git
-  revision: 750d517ca2c965bc6209727c272de40ea1c51686
+  revision: 3df92d4290db8b90428929645745bdea9194856c
+  branch: order_refactoring
   specs:
     glysellin (0.3.1)
       activemerchant
@@ -11,8 +12,16 @@ GIT
       simple_form
       state_machine
 
-PATH
-  remote: /Users/damien/glyph/gems/restful_sync
+GIT
+  remote: git://github.com/vala/rails_admin_glyph_theme.git
+  revision: 78ed1ba6c8174be4aafd321a9f7496ecb0b7d245
+  specs:
+    rails_admin_glyph_theme (0.0.1)
+      rails (~> 3.2.12)
+
+GIT
+  remote: git://github.com/vala/restful_sync.git
+  revision: ae8ef8f0b70946743752f334cde2071e6f358405
   specs:
     restful_sync (0.0.1)
       draper (~> 1.0)
@@ -38,7 +47,7 @@ GEM
     active_utils (1.0.5)
       activesupport (>= 2.3.11)
       i18n
-    activemerchant (1.31.1)
+    activemerchant (1.32.1)
       active_utils (>= 1.0.2)
       activesupport (>= 2.3.14)
       builder (>= 2.0.0)
@@ -65,6 +74,7 @@ GEM
     bootstrap-sass (2.3.0.1)
       sass (~> 3.2)
     builder (3.0.4)
+    chunky_png (1.2.8)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -76,6 +86,15 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.1)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
+    compass-rgbapng (0.1.1)
+      chunky_png (>= 0.8.0)
+      compass (>= 0.10.0)
     country_select (1.1.3)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
@@ -92,9 +111,10 @@ GEM
     font-awesome-sass-rails (3.0.2.2)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
+    fssm (0.2.10)
     haml (4.0.0)
       tilt
-    hike (1.2.1)
+    hike (1.2.2)
     i18n (0.6.4)
     journey (1.0.4)
     jquery-rails (2.2.1)
@@ -112,10 +132,10 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.21)
+    mime-types (1.22)
     money (5.1.1)
       i18n (~> 0.6.0)
-    multi_json (1.7.1)
+    multi_json (1.7.2)
     nested_form (0.3.1)
     nestful (1.0.0.rc2)
     nokogiri (1.5.8)
@@ -126,6 +146,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
+    pg (0.14.1)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -167,7 +188,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (10.0.3)
+    rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.2)
@@ -188,12 +209,12 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
-    state_machine (1.1.2)
+    state_machine (1.2.0)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
-    thor (0.17.0)
-    tilt (1.3.6)
+    thor (0.18.1)
+    tilt (1.3.7)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -208,15 +229,21 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   coffee-rails (~> 3.2.1)
+  compass-rails
+  compass-rgbapng
   devise
   glysellin!
   jquery-rails
   paperclip
+  pg (= 0.14.1)
   rails (= 3.2.12)
   rails_admin
+  rails_admin_glyph_theme!
   restful_sync!
   sass-rails (~> 3.2.3)
+  simple_form
   sqlite3
   therubyracer
   uglifier (>= 1.0.3)
