@@ -15,8 +15,11 @@ RestfulSync.config do |config|
     ]
 
     # Define the accessible resources models
-    config.accessible_resources = [Glysellin::Order, User]
+    config.accessible_resources = [Glysellin::Order]
 
     # Define the targeted API URL
     config.end_point = "restful-sync-child.herokuapp.com/api"
+    # config.end_point = "localhost:3000/api"
+
+    config.override_api_controller = [User]
 end

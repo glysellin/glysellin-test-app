@@ -19,9 +19,8 @@ GIT
     rails_admin_glyph_theme (0.0.1)
       rails (~> 3.2.12)
 
-GIT
-  remote: git://github.com/vala/restful_sync.git
-  revision: be5e32617118798f145cd8ae2283b06a21d453d1
+PATH
+  remote: /Users/damien/glyph/gems/restful_sync
   specs:
     restful_sync (0.0.1)
       draper (~> 1.0)
