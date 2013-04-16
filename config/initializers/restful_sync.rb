@@ -4,14 +4,14 @@ RestfulSync.config do |config|
     # Define the observed resources models
     config.observed_resources = [
       Glysellin::Product,
-      Glysellin::ProductType, 
-      Glysellin::Brand, 
-      Glysellin::Order, 
-      Glysellin::DiscountCode, 
-      Glysellin::Taxonomy, 
-      Glysellin::ShippingMethod, 
-      Glysellin::PaymentMethod, 
-      User
+        Glysellin::ProductType, 
+        Glysellin::Brand, 
+        Glysellin::Order, 
+        Glysellin::DiscountCode, 
+        Glysellin::Taxonomy, 
+        Glysellin::ShippingMethod, 
+        Glysellin::PaymentMethod, 
+        User
     ]
 
     # Define the accessible resources models
