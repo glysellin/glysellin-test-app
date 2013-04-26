@@ -19,11 +19,11 @@ GIT
     rails_admin_glyph_theme (0.0.1)
       rails (~> 3.2.12)
 
-PATH
-  remote: /Users/damien/glyph/gems/restful_sync
+GIT
+  remote: git://github.com/vala/restful_sync.git
+  revision: aba3d604f51b6427b5bf1ed3a95c58971c84bd96
   specs:
     restful_sync (0.0.1)
-      devise
       draper (~> 1.0)
       nestful (>= 1.0.0.rc2)
       rails (~> 3.2.0)
@@ -137,7 +137,7 @@ GEM
       i18n (~> 0.6.0)
     multi_json (1.7.2)
     nested_form (0.3.2)
-    nestful (1.0.0.rc2)
+    nestful (1.0.1)
     nokogiri (1.5.9)
     orm_adapter (0.4.0)
     paperclip (3.4.1)
