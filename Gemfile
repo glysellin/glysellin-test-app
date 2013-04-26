@@ -31,7 +31,7 @@ gem 'devise'
 gem 'simple_form'
 
 gem 'glysellin', git: "git://github.com/vala/glysellin.git", branch: "order_refactoring"
-gem 'restful_sync', git: "git://github.com/vala/restful_sync.git"
-# gem 'restful_sync', path: "/Users/damien/glyph/gems/restful_sync"
+# gem 'restful_sync', git: "git://github.com/vala/restful_sync.git"
+gem 'restful_sync', path: "/Users/damien/glyph/gems/restful_sync"
 # gem 'glysellin', path: "/Users/vala/Documents/development/ruby/gems/glysellin"
 # gem 'glysellin', path: "/Users/damien/glyph/gems/glysellin"
