@@ -21,9 +21,10 @@ GIT
 
 GIT
   remote: git://github.com/vala/restful_sync.git
-  revision: aba3d604f51b6427b5bf1ed3a95c58971c84bd96
+  revision: 3325673c98a519ec2a93b70796820e61eb7c47cc
   specs:
     restful_sync (0.0.1)
+      devise
       draper (~> 1.0)
       nestful (>= 1.0.0.rc2)
       rails (~> 3.2.0)
@@ -132,7 +133,7 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.22)
+    mime-types (1.23)
     money (5.1.1)
       i18n (~> 0.6.0)
     multi_json (1.7.2)
