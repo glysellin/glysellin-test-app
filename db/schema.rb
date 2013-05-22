@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426092138) do
+ActiveRecord::Schema.define(:version => 20130515103244) do
 
   create_table "glysellin_addresses", :force => true do |t|
     t.boolean  "activated",                :default => true
@@ -229,14 +229,27 @@ ActiveRecord::Schema.define(:version => 20130426092138) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
-  create_table "restful_sync_api_sources", :force => true do |t|
+  create_table "restful_sync_api_clients", :force => true do |t|
     t.string   "authentication_token"
-    t.string   "end_point"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
   end
 
-  add_index "restful_sync_api_sources", ["authentication_token"], :name => "index_restful_sync_api_sources_on_authentication_token", :unique => true
+  add_index "restful_sync_api_clients", ["authentication_token"], :name => "index_restful_sync_api_clients_on_authentication_token", :unique => true
+
+  create_table "restful_sync_api_targets", :force => true do |t|
+    t.string   "end_point"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "restful_sync_sync_refs", :force => true do |t|
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.string   "uuid"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
