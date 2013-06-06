@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315114110) do
+ActiveRecord::Schema.define(:version => 20130325113921) do
 
   create_table "glysellin_addresses", :force => true do |t|
     t.boolean  "activated",                :default => true
@@ -99,12 +99,10 @@ ActiveRecord::Schema.define(:version => 20130315114110) do
     t.string   "status"
     t.datetime "paid_on"
     t.integer  "user_id"
-    t.integer  "billing_address_id"
-    t.integer  "shipping_address_id"
     t.string   "state"
     t.integer  "customer_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "shipping_method_id"
   end
 

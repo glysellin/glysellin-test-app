@@ -1,7 +1,12 @@
 GIT
-  remote: git://github.com/vala/glysellin.git
-  revision: 6962e64f77a31b37a0f6c9adc82d96152cf74933
-  branch: order_refactoring
+  remote: git://github.com/vala/rails_admin_glyph_theme.git
+  revision: 1959b82217a39b2c6cf164cf336bb05e7ee3cdaa
+  specs:
+    rails_admin_glyph_theme (0.0.1)
+      rails (~> 3.2.12)
+
+PATH
+  remote: /Users/vala/Documents/development/ruby/gems/glysellin
   specs:
     glysellin (0.3.1)
       activemerchant
@@ -11,13 +16,6 @@ GIT
       rails (~> 3.2.0)
       simple_form
       state_machine
-
-GIT
-  remote: git://github.com/vala/rails_admin_glyph_theme.git
-  revision: 1959b82217a39b2c6cf164cf336bb05e7ee3cdaa
-  specs:
-    rails_admin_glyph_theme (0.0.1)
-      rails (~> 3.2.12)
 
 GEM
   remote: https://rubygems.org/
