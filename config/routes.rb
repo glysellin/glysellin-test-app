@@ -6,10 +6,6 @@ GlysellinTest::Application.routes.draw do
 
   root to: "home#index"
 
-  get 'bootstrap' => 'home#bootstrap', as: 'bootstrap'
-  get 'fuelux' => 'home#fuelux', as: 'fuelux'
-  get 'glyph' => 'home#glyph', as: 'glyph'
-
   resource :user, only: [:show, :edit, :update]
 
   glysellin_at '/shop'

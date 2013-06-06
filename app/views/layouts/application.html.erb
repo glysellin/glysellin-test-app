@@ -1,60 +1,44 @@
 <!DOCTYPE html>
 <html class="fuelux">
-<head>
-  <title>GlysellinTest</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div class="container">
-    <div class='navbar'>
-      <div class='navbar-inner'>
-        <%= link_to "Glysellin Test App", "/", class: "brand" %>
-        <ul class="nav">
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" data-hover="dropdown" data-delay="500" data-close-others="false">
-              Custom
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
+  <head>
+    <title>GlysellinTest</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class='navbar'>
+        <div class='navbar-inner'>
+          <%= link_to "Glysellin Test App", "/", class: "brand" %>
+          <ul class="nav">
+            <% if current_user %>
               <li>
-                <%= link_to "Bootstrap", bootstrap_path %>
+                <%= link_to 'Log out', destroy_user_session_path, method: 'delete' %>
               </li>
               <li>
-                <%= link_to "FuelUX", fuelux_path %>
+                <%= link_to 'My Account', user_path %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to 'Sign in', new_user_session_path %>
               </li>
               <li>
-                <%= link_to "Glyph", glyph_path %>
+                <%= link_to 'Sign up', new_user_registration_path %>
               </li>
-            </ul>
-          </li>
-          <% if current_user %>
-            <li>
-              <%= link_to 'Log out', destroy_user_session_path, method: 'delete' %>
-            </li>
-            <li>
-              <%= link_to 'Mon compte', user_path %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to 'Sign in', new_user_session_path %>
-            </li>
-            <li>
-              <%= link_to 'Sign up', new_user_registration_path %>
-            </li>
-          <% end %>
-          <li class="divider-vertical"></li>
-        </ul>
-        <div class="pull-right" style="padding-top:10px;">
-          <%= render_cart(@cart) %>
+            <% end %>
+            <li class="divider-vertical"></li>
+          </ul>
+          <div class="pull-right" style="padding-top:10px;">
+            <%= render_cart(current_cart) %>
+          </div>
         </div>
       </div>
+      <%= render partial: "layouts/flash_notice" %>
+      <%= yield %>
     </div>
-    <%= render partial: "layouts/flash_notice" %>
-    <%= yield %>
-  </div>
 
-  <%= javascript_include_tag "application" %>
-</body>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>
