@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130515103244) do
+=======
+ActiveRecord::Schema.define(:version => 20130325113921) do
+>>>>>>> 0338915196eeea810783cbb047a5a238317c9a02
 
   create_table "glysellin_addresses", :force => true do |t|
     t.boolean  "activated",                :default => true
@@ -99,12 +103,10 @@ ActiveRecord::Schema.define(:version => 20130515103244) do
     t.string   "status"
     t.datetime "paid_on"
     t.integer  "user_id"
-    t.integer  "billing_address_id"
-    t.integer  "shipping_address_id"
     t.string   "state"
     t.integer  "customer_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "shipping_method_id"
   end
 

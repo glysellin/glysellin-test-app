@@ -7,7 +7,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '0.14.1'
+  gem 'pg'
 end
 
 # Gems used only for assets and not required
@@ -30,8 +30,8 @@ gem 'paperclip'
 gem 'devise'
 gem 'simple_form'
 
-gem 'glysellin', git: "git://github.com/vala/glysellin.git", branch: "order_refactoring"
+# gem 'glysellin', git: "git://github.com/vala/glysellin.git", branch: "order_refactoring"
 gem 'restful_sync', git: "git://github.com/vala/restful_sync.git"
 # gem 'restful_sync', path: "/Users/damien/glyph/gems/restful_sync"
 # gem 'glysellin', path: "/Users/vala/Documents/development/ruby/gems/glysellin"
-# gem 'glysellin', path: "/Users/damien/glyph/gems/glysellin"
+gem 'glysellin', path: "/Users/damien/glyph/gems/glysellin/glysellin"

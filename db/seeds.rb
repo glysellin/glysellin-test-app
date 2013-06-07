@@ -17,6 +17,8 @@ logging "Generate default user" do
   )
 end
 
+Rake::Task["glysellin:seed"].invoke
+
 # Products
 logging "Generate default products" do
   rows = CSV.parse File.read Rails.root.join("db", "seed-files", "products.csv")

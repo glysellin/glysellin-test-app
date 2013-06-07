@@ -1,0 +1,498 @@
+//***************************************************************
+//    Imports
+//***************************************************************
+// --- Importing Bootstrap variables for colors and orther --- //
+@import "bootstrap-variables"
+
+// ------------------------ Compass  ------------------------- //
+@import "compass/css3/text-shadow"
+@import "compass/css3/border-radius"
+@import "compass/css3/opacity"
+@import "compass/css3/inline-block"
+
+//***************************************************************
+//    FuelUX Overriding by Glyph
+//***************************************************************
+
+@mixin fontAwesome
+  font-family: FontAwesome
+  font-weight: normal
+  font-style: normal
+  text-decoration: inherit
+  -webkit-font-smoothing: antialiased
+  /* sprites.less reset */
+  display: inline
+  width: auto
+  height: auto
+  line-height: normal
+  vertical-align: baseline
+  background-image: none
+  background-position: 0% 0%
+  background-repeat: repeat
+  margin-top: 0
+
+// ------------------------ Checkbox  ------------------------- //
+
+.form-inline .checkbox-custom
+  padding-left: 20px
+  .checkbox
+    padding-left: 16px
+
+.checkbox-custom
+  input[type=checkbox]
+    +opacity(0)
+
+  i.checkbox
+    +fontAwesome
+    padding-left: 0
+    margin-left: -20px
+    &:before
+      content: "\f096"
+    &.checked::before
+      /* checked
+      content: "\f046"
+    &.focus
+      /* focus
+      +text-shadow(rgba(0, 0, 0, 0.3) 0px 0px 3px)
+    &.disabled
+      /* disabled
+      color: $grayLight
+      cursor: not-allowed
+      &.checked
+        /* disabled and checked
+
+  &:hover i
+    +text-shadow(rgba(0, 0, 0, 0.3) 0px 0px 3px)
+    &.checked
+      /* checked
+    &.disabled
+      /* disabled
+      +text-shadow(none)
+      cursor: not-allowed
+      &.checked
+        /* disabled and checked
+
+
+// ------------------------ Radio  ------------------------- //
+
+.radio-custom
+  input[type=radio]
+    +opacity(0)
+  i
+    +fontAwesome
+    padding-left: 0
+    margin-left: -20px
+    &:before
+      content: "\f10c"
+    &.checked::before
+      /* checked
+      content: "\f111"
+    &.focus
+      /* focus
+      +text-shadow(rgba(0, 0, 0, 0.3) 0px 0px 3px)
+    &.disabled
+      /* disabled
+      color: $grayLight
+      cursor: not-allowed
+      &.checked
+        /* disabled and checked */
+
+  &:hover i
+    +text-shadow(rgba(0, 0, 0, 0.3) 0px 0px 3px)
+    &.checked
+      /* checked */
+    &.disabled
+      /* disabled */
+      +text-shadow(none)
+      cursor: not-allowed
+      &.checked
+        /* disabled and checked */
+
+
+// ------------------------ Spinner  ------------------------- //
+
+.spinner
+  input
+    float: left
+  .btn
+    position: relative
+    width: 20px
+    height: 14px
+    padding-top: 0
+    line-height: 0px
+    font-size: 10px
+    padding-right: 9px
+    padding-left: 9px
+    &.disabled
+      cursor: not-allowed
+  .spinner-buttons
+    position: relative
+    float: left
+    height: 28px
+    width: 20px
+    left: -22px
+  .spinner-up
+    padding: 0 0 4px 1px
+    top: 2px
+  .spinner-down
+    padding: 0 0 4px 1px
+    top: 2px
+    height: 13px
+
+// ------------------------ Search  ------------------------- //
+
+.search
+  +inline-block
+  button.btn
+    border-radius: 0 $inputBorderRadius $inputBorderRadius 0
+    width: 40px
+
+// ------------------------ Combobox  ------------------------- //
+
+.combobox
+  +inline-block
+  a
+    font-size: $baseFontSize
+  button.btn
+    border-radius: 0 $inputBorderRadius $inputBorderRadius 0
+    width: 40px
+  .dropdown-menu
+    width: 100%
+
+// ------------------------ Select  ------------------------- //
+
+.select
+  .btn.dropdown-toggle
+    text-align: left
+    .caret
+      float: right
+    .dropdown-label
+      padding: 0 10px 0 0
+      margin: 0
+      +inline-block
+      text-align: left
+      font-weight: normal
+      color: #333
+  .dropdown-menu
+    width: 100%
+    a
+      padding: 4px 12px
+#selectTextSize
+  +inline-block
+  position: absolute
+  visibility: hidden
+  top: 0
+
+// ------------------------ Pillbox  ------------------------- //
+
+.pillbox
+  padding: 3px
+  ul
+    +inline-block
+    margin: 0
+  li
+    // Begin Bootstrap .label
+    font-size: $baseFontSize * .846
+    font-weight: bold
+    line-height: 21px // modified
+    color: $white
+    vertical-align: baseline
+    //white-space: nowrap //removed
+    +text-shadow(none)
+    background-color: $grayLight
+    padding: 1px 4px 2px
+    +border-radius(3px)
+    // End Bootstrap .label
+    +inline-block
+    margin: 2px
+    cursor: pointer
+    float:left
+    &:after
+      // Begin Bootstrap .close
+      float: right
+      font-size: 20px
+      font-weight: bold
+      line-height: $baseLineHeight
+      color: $black
+      text-shadow: 0 1px 0 rgba(255,255,255,1)
+      +opacity(20)
+      // End Bootstrap .close
+      padding-left: 4px
+      position: relative
+      top: -2px
+      content: " \00D7"
+    &:hover
+      &:after
+        +opacity(40)
+    &.status-important
+      background-color: $red
+    &.status-warning
+      background-color: $orange
+    &.status-success
+      background-color: $green
+    &.status-info
+      background-color: $blue
+
+// ------------------------ Tree  ------------------------- //
+
+.tree
+  border: 1px solid #BBBBBB
+  border-radius: 4px 4px 4px 4px
+  overflow-y: auto
+  overflow-x: hidden
+  padding: 10px 15px 0 15px
+  position: relative
+  .tree-folder
+    width: 100%
+    min-height: 20px
+    cursor: pointer
+    margin-top: 1px
+    .tree-folder-header
+      position: relative
+      height: 20px
+      +border-radius(6px)
+      &:hover
+        background-color: $treeBackgroundHover
+      i
+        position: absolute
+        float: left
+        top: 1px
+        left: 5px
+      .tree-folder-name
+        padding-left: 29px
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+    .tree-folder-content
+      margin-left: 23px
+  .tree-item
+    position: relative
+    width: 100%
+    height: 20px
+    cursor: pointer
+    margin-top: 1px
+    +border-radius(6px)
+    &:hover
+      background-color: $treeBackgroundHover
+    .tree-item-name
+      position: absolute
+      left: 29px
+    .tree-dot
+      position: absolute
+      top: 8px
+      left: 10px
+      display: block
+      width: 4px
+      height: 4px
+      background-color: $grayDark
+      +border-radius(6px)
+    .icon-ok
+      position: absolute
+      top: 1px
+      left: 5px
+  .tree-selected
+    background-color: $treeBackgroundSelect
+    &:hover
+      background-color: $treeBackgroundSelect
+
+// ------------------------ Data Grid  ------------------------- //
+
+$tableBackgroundAccentDark: darken($tableBackgroundAccent, 8%)
+.datagrid
+  thead
+    background-color: $tableBackgroundAccent
+    .datagrid-header-title
+      float: left
+      line-height: 28px
+      font-weight: normal
+      font-size: 14px
+      margin-right: 10px
+    .datagrid-header-left
+      float: left
+    .datagrid-header-right
+      float: right
+    .datagrid-header-right, .datagrid-header-left
+      .search, .filter
+        margin-left: 8px
+        margin-bottom: 0
+        .dropdown-menu
+          top: auto
+          left: auto
+    .sorted
+      // +gradientBar($tableBackgroundAccent, $tableBackgroundAccentDark, $textColor, 'none')
+      padding-right: 30px
+      i
+        float: right
+        margin-top: 2px
+        margin-right: -22px
+    .sortable
+      cursor: pointer
+      &:hover
+        // .gradientBar($tableBackgroundAccent, $tableBackgroundAccentDark, $textColor, 'none')
+  tfoot
+    background-color: $tableBackgroundAccent
+    .datagrid-footer-left
+      float: left
+      .grid-controls
+        margin-top: 7px
+        select
+          margin: 0 5px 1px
+          width: 60px
+        .grid-pagesize
+          display: inline-block
+          margin-bottom: 5px
+          vertical-align: middle
+          .dropdown-menu
+            top: auto
+            left: auto
+        span
+          font-weight: normal
+    .datagrid-footer-right
+      float: right
+      .grid-pager
+        > span
+          font-weight: normal
+          position: relative
+          top: 8px
+        .dropdown-menu
+          min-width: 50px
+        .combobox
+          display: inline-block
+          position: relative
+          top: -2px
+          vertical-align: baseline
+          margin-bottom: 4px
+        > button
+          position: relative
+          top: 7px
+.datagrid-stretch-header
+  border-bottom: 0
+  +border-bottom-radius(0)
+  margin-bottom: 0
+  thead:last-child tr:last-child > th:first-child,
+  thead:last-child tr:last-child > th:last-child
+    +border-bottom-radius(0)
+.datagrid-stretch-wrapper
+  border: 1px solid $tableBorder
+  overflow: auto
+  .datagrid
+    border: none
+    border-collapse: collapse
+    +border-radius(0)
+    margin-bottom: 0
+    td, th
+      border-bottom: 1px solid $tableBorder
+      &:first-child
+        border-left: none
+        +border-radius(0)
+.datagrid-stretch-footer
+  border-top: 0
+  +border-top-radius(0)
+  th
+    border-top: 0
+
+// ------------------------ Wizard  ------------------------- //
+
+.wizard
+  border: 1px solid $whiteDarker
+  +border-radius($baseBorderRadius)
+  background-color: $tableBackgroundAccent
+  &:after
+    clear: both
+  &:after,
+  &:before
+    display: table
+    content: ""
+    line-height: 0
+  ul
+    list-style: none outside none
+    padding: 0
+    margin: 0
+    li
+      float: left
+      margin: 0
+      padding: 0 20px 0 30px
+      height: 46px
+      line-height: 46px
+      position: relative
+      background: #ededed
+      color: $grayLight
+      font-size: 16px
+      cursor: default
+      .chevron
+        border: 24px solid transparent
+        border-left: 14px solid $whiteDarker
+        border-right: 0
+        display: block
+        position: absolute
+        right: -14px
+        top: 0
+      .chevron:before
+        border: 24px solid transparent
+        border-left: 14px solid #ededed
+        border-right: 0
+        content: ""
+        display: block
+        position: absolute
+        right: 1px
+        top: -24px
+      &.complete
+        background: #f3f4f5
+        color: $green
+        &:hover
+          background: #e7eff8
+          cursor: pointer
+          .chevron:before
+            border-left: 14px solid #e7eff8
+        .chevron:before
+          border-left: 14px solid #f3f4f5
+      &.active
+        background: #f1f6fc
+        color: $blue
+        .chevron:before
+          border-left: 14px solid #f1f6fc
+      .badge
+        margin-right: 8px
+    /* set z-index on steps for chevron overlap */
+    li:nth-child(1)
+      border-radius: 4px 0 0 4px
+      padding-left: 20px
+      z-index: 10
+    li:nth-child(2)
+      z-index: 9
+    li:nth-child(3)
+      z-index: 8
+    li:nth-child(4)
+      z-index: 7
+    li:nth-child(5)
+      z-index: 6
+    li:nth-child(6)
+      z-index: 5
+    li:nth-child(7)
+      z-index: 4
+    li:nth-child(8)
+      z-index: 3
+    li:nth-child(9)
+      z-index: 2
+    li:nth-child(10)
+      z-index: 1
+  .actions
+    line-height: 44px
+    float: right
+    padding-right: 15px
+    vertical-align: middle
+    a
+      line-height: 45px
+      font-size: 12px
+      margin-right: 8px
+    .btn-prev
+      i
+        margin-right: 5px
+    .btn-next
+      i
+        margin-left: 5px
+.step-content
+  .step-pane
+    display: none
+  .active
+    display: block
