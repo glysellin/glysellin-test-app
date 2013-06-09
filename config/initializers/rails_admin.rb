@@ -44,6 +44,8 @@ RailsAdmin.config do |config|
     end
   end
 
+
+
   config.model "Glysellin::Product" do
     nested do
       exclude_fields :sellable
@@ -62,8 +64,7 @@ RailsAdmin.config do |config|
 
       configure :name do
         visible do
-          parent = bindings[:form].parent_builder.options[:as].camelize.constantize
-          !parent.sellable_options[:simple]
+          !parent_from(bindings).sellable_options[:simple]
         end
       end
 
@@ -75,17 +76,19 @@ RailsAdmin.config do |config|
 
       configure :unlimited_stock do
         visible do
-          parent = bindings[:form].parent_builder.options[:as].camelize.constantize
-          parent.sellable_options[:stock]
+          parent_from(bindings).sellable_options[:stock]
         end
       end
 
       configure :in_stock do
         visible do
-          parent = bindings[:form].parent_builder.options[:as].camelize.constantize
-          parent.sellable_options[:stock]
+          parent_from(bindings).sellable_options[:stock]
         end
       end
     end
+  end
+
+  def parent_from bindings
+    bindings[:form].parent_builder.options[:as].camelize.constantize
   end
 end
