@@ -1,5 +1,7 @@
-PATH
-  remote: /Users/vala/Documents/development/ruby/gems/glysellin
+GIT
+  remote: git://github.com/Glysellin/glysellin.git
+  revision: 0785909c8804d474fc881a23ce29f463076d0fec
+  branch: acts_as_sellable
   specs:
     glysellin (0.4.1)
       activemerchant
@@ -11,8 +13,9 @@ PATH
       simple_form
       state_machine
 
-PATH
-  remote: /Users/vala/Documents/development/ruby/gems/rails_admin
+GIT
+  remote: git://github.com/vala/rails_admin.git
+  revision: 19a0012e52c81073a5b8d739d3fe3cc81496f21a
   specs:
     rails_admin (0.4.9)
       bootstrap-sass (~> 2.2)
@@ -131,11 +134,13 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
+    mini_portile (0.5.0)
     money (5.1.1)
       i18n (~> 0.6.0)
     multi_json (1.7.6)
     nested_form (0.3.2)
-    nokogiri (1.5.8)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
     paperclip (3.4.1)
       activemodel (>= 3.0.0)

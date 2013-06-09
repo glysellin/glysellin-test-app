@@ -27,12 +27,14 @@ gem 'jquery-rails'
 # gem 'rails_admin_glyph_theme', git: 'git://github.com/vala/rails_admin_glyph_theme.git'
 
 # gem 'rails_admin'
-gem 'rails_admin', path: "/Users/vala/Documents/development/ruby/gems/rails_admin"
+gem 'rails_admin', git: "git://github.com/vala/rails_admin.git"
+# gem 'rails_admin', path: "/Users/vala/Documents/development/ruby/gems/rails_admin"
 
 gem 'paperclip'
 gem 'devise'
 gem 'simple_form'
 
 # gem 'glysellin', git: "git://github.com/Glysellin/glysellin.git"
-gem 'glysellin', path: "/Users/vala/Documents/development/ruby/gems/glysellin"
+gem 'glysellin', git: "git://github.com/Glysellin/glysellin.git", branch: "acts_as_sellable"
+# gem 'glysellin', path: "/Users/vala/Documents/development/ruby/gems/glysellin"
 # gem 'glysellin', path: "/Users/damien/glyph/gems/glysellin"
