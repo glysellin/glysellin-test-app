@@ -1,0 +1,10 @@
+- @fruits.each do |fruit|
+  .fruit-container
+    .title
+      = fruit.name
+
+    - if fruit.image?
+      .image
+        = image_tag fruit.image.url(:thumb)
+
+    = add_to_cart_form(fruit)
