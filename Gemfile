@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 
 group :development do
   gem 'sqlite3'
 end
 
 group :production do
-  gem 'pg'
+  # gem 'pg'
 end
 
 # Gems used only for assets and not required
@@ -34,4 +34,5 @@ gem 'simple_form'
 gem 'restful_sync', git: "git://github.com/vala/restful_sync.git"
 # gem 'restful_sync', path: "/Users/damien/glyph/gems/restful_sync"
 # gem 'glysellin', path: "/Users/vala/Documents/development/ruby/gems/glysellin"
-gem 'glysellin', path: "/Users/damien/glyph/gems/glysellin/glysellin"
+gem 'glysellin'
+gem 'glysellin_associated_products', path: "/Users/damien/glyph/gems/glysellin/glysellin_associated_products"
