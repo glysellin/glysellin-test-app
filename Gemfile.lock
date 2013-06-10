@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Glysellin/glysellin.git
-  revision: 0785909c8804d474fc881a23ce29f463076d0fec
+  revision: f1fc1495c60d6afd5862724cb413509032c7d415
   branch: acts_as_sellable
   specs:
     glysellin (0.4.1)
