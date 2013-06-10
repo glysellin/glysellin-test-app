@@ -1,7 +1,6 @@
 GIT
   remote: git://github.com/Glysellin/glysellin.git
-  revision: a706c7dcac9b54c48b9b5a58e429f72883adaed9
-  branch: acts_as_sellable
+  revision: a242f6fe8441fbc2ba81a1a37b9819bd6f68c295
   specs:
     glysellin (0.4.1)
       activemerchant
@@ -13,9 +12,8 @@ GIT
       simple_form
       state_machine
 
-GIT
-  remote: git://github.com/vala/rails_admin.git
-  revision: 19a0012e52c81073a5b8d739d3fe3cc81496f21a
+PATH
+  remote: /Users/vala/Documents/development/ruby/gems/rails_admin
   specs:
     rails_admin (0.4.9)
       bootstrap-sass (~> 2.2)
