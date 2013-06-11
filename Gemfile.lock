@@ -13,6 +13,14 @@ GIT
       state_machine
 
 GIT
+  remote: git://github.com/Glysellin/glysellin_associated_products.git
+  revision: e501c875273ec9669171569ba7a4499ac697ee55
+  specs:
+    glysellin_associated_products (0.0.1)
+      glysellin (~> 0.4.1)
+      rails (~> 3.2.13)
+
+GIT
   remote: git://github.com/vala/rails_admin.git
   revision: 19a0012e52c81073a5b8d739d3fe3cc81496f21a
   specs:
@@ -31,22 +39,6 @@ GIT
       remotipart (~> 1.0)
       safe_yaml (~> 0.6)
       sass-rails (~> 3.1)
-
-GIT
-  remote: git://github.com/vala/restful_sync.git
-  revision: 1aafb48761a452b7f2ea3d62160694676b317ebb
-  specs:
-    restful_sync (0.0.1)
-      devise
-      httparty
-      rails (~> 3.2.0)
-
-PATH
-  remote: /Users/damien/glyph/gems/glysellin/glysellin_associated_products
-  specs:
-    glysellin_associated_products (0.0.1)
-      glysellin (~> 0.4.1)
-      rails (~> 3.2.13)
 
 GEM
   remote: https://rubygems.org/
@@ -131,9 +123,6 @@ GEM
     haml (4.0.3)
       tilt
     hike (1.2.3)
-    httparty (0.11.0)
-      multi_json (~> 1.0)
-      multi_xml (>= 0.5.2)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (3.0.1)
@@ -155,7 +144,6 @@ GEM
     money (5.1.1)
       i18n (~> 0.6.0)
     multi_json (1.7.6)
-    multi_xml (0.5.4)
     nested_form (0.3.2)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
@@ -243,7 +231,6 @@ DEPENDENCIES
   paperclip
   rails (= 3.2.13)
   rails_admin!
-  restful_sync!
   sass-rails (~> 3.2.3)
   simple_form
   sqlite3
