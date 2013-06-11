@@ -5,7 +5,6 @@ class CreateGlysellinProductAssociations < ActiveRecord::Migration
       t.integer :position
       t.integer :associated_product_id
       t.integer :referer_product_id
-      t.integer :product_id
       t.timestamps
     end
   end
