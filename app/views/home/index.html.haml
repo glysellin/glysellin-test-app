@@ -1,0 +1,28 @@
+%h2
+  Fruits
+
+- @fruits.each do |fruit|
+  .fruit-container
+    .title
+      = fruit.name
+      
+    - if fruit.image?
+      .image
+        = image_tag fruit.image.url(:thumb)
+
+    = add_to_cart_form(fruit)
+    = associated_products_for fruit
+
+%h2
+  Vegetables
+
+- @vegetables.each do |vegetable|
+  .vegetable-container
+    .title
+      = vegetable.name
+
+    - if vegetable.image?
+      .image
+        = image_tag vegetable.image.url(:thumb)
+
+    = add_to_cart_form(vegetable)

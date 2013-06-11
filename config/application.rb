@@ -7,7 +7,7 @@ if defined?(Bundler)
   Bundler.require(*Rails.groups(:assets => %w(development test)))
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
-  ENV['RAILS_ADMIN_THEME'] = 'glyph_theme'
+  # ENV['RAILS_ADMIN_THEME'] = 'glyph_theme'
 end
 
 module GlysellinTest
@@ -27,7 +27,7 @@ module GlysellinTest
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
-    config.active_record.observers = RestfulSync::ApiObserver
+    # config.active_record.observers = RestfulSync::ApiObserver
     
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

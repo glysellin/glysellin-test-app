@@ -11,11 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130515103244) do
-=======
-ActiveRecord::Schema.define(:version => 20130325113921) do
->>>>>>> 0338915196eeea810783cbb047a5a238317c9a02
+ActiveRecord::Schema.define(:version => 20130611085919) do
+
+  create_table "fruits", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
 
   create_table "glysellin_addresses", :force => true do |t|
     t.boolean  "activated",                :default => true
@@ -75,17 +82,7 @@ ActiveRecord::Schema.define(:version => 20130325113921) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "glysellin_order_adjustments", :force => true do |t|
-    t.string   "name"
-    t.decimal  "value",           :precision => 11, :scale => 2
-    t.integer  "order_id"
-    t.integer  "adjustment_id"
-    t.string   "adjustment_type"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
-  end
-
-  create_table "glysellin_order_items", :force => true do |t|
+  create_table "glysellin_line_items", :force => true do |t|
     t.string   "sku"
     t.string   "name"
     t.decimal  "eot_price",  :precision => 11, :scale => 2
@@ -96,6 +93,17 @@ ActiveRecord::Schema.define(:version => 20130325113921) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.decimal  "weight",     :precision => 11, :scale => 3
+    t.integer  "variant_id"
+  end
+
+  create_table "glysellin_order_adjustments", :force => true do |t|
+    t.string   "name"
+    t.decimal  "value",           :precision => 11, :scale => 2
+    t.integer  "order_id"
+    t.integer  "adjustment_id"
+    t.string   "adjustment_type"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
   end
 
   create_table "glysellin_orders", :force => true do |t|
@@ -127,6 +135,15 @@ ActiveRecord::Schema.define(:version => 20130325113921) do
     t.datetime "updated_at",             :null => false
   end
 
+  create_table "glysellin_product_associations", :force => true do |t|
+    t.integer  "position"
+    t.integer  "associated_product_id"
+    t.integer  "referer_product_id"
+    t.integer  "product_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
   create_table "glysellin_product_images", :force => true do |t|
     t.string   "name"
     t.integer  "imageable_id"
@@ -140,48 +157,24 @@ ActiveRecord::Schema.define(:version => 20130325113921) do
   end
 
   create_table "glysellin_product_properties", :force => true do |t|
-    t.string   "name"
     t.string   "value"
-    t.decimal  "adjustement",  :precision => 11, :scale => 2
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "type_id"
     t.integer  "variant_id"
-    t.string   "variant_type"
   end
 
   create_table "glysellin_product_property_types", :force => true do |t|
     t.string "name"
   end
 
-  create_table "glysellin_product_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "glysellin_product_types_properties", :id => false, :force => true do |t|
-    t.integer "product_type_id"
-    t.integer "product_property_id"
-  end
-
   create_table "glysellin_products", :force => true do |t|
-    t.string   "sku"
-    t.string   "name"
-    t.string   "slug"
-    t.text     "description"
-    t.decimal  "vat_rate",        :precision => 11, :scale => 2
-    t.integer  "position",                                       :default => 1
-    t.boolean  "published",                                      :default => true
+    t.decimal  "vat_rate",      :precision => 11, :scale => 2
     t.integer  "brand_id"
-    t.datetime "created_at",                                                       :null => false
-    t.datetime "updated_at",                                                       :null => false
-    t.integer  "product_type_id"
-  end
-
-  create_table "glysellin_products_taxonomies", :id => false, :force => true do |t|
-    t.integer "product_id"
-    t.integer "taxonomy_id"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+    t.string   "sellable_type"
+    t.integer  "sellable_id"
   end
 
   create_table "glysellin_shipping_methods", :force => true do |t|
@@ -193,14 +186,6 @@ ActiveRecord::Schema.define(:version => 20130325113921) do
 
   add_index "glysellin_shipping_methods", ["identifier"], :name => "index_glysellin_shipping_methods_on_identifier"
 
-  create_table "glysellin_taxonomies", :force => true do |t|
-    t.string   "name"
-    t.string   "slug"
-    t.integer  "parent_taxonomy_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-  end
-
   create_table "glysellin_variants", :force => true do |t|
     t.string   "sku"
     t.string   "name"
@@ -210,12 +195,12 @@ ActiveRecord::Schema.define(:version => 20130325113921) do
     t.integer  "in_stock",                                       :default => 0
     t.boolean  "unlimited_stock",                                :default => false
     t.boolean  "published",                                      :default => true
-    t.integer  "position"
     t.datetime "created_at",                                                        :null => false
     t.datetime "updated_at",                                                        :null => false
-    t.integer  "product_id"
     t.decimal  "weight"
     t.decimal  "unmarked_price",  :precision => 11, :scale => 2
+    t.integer  "sellable_id"
+    t.string   "sellable_type"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -270,5 +255,16 @@ ActiveRecord::Schema.define(:version => 20130325113921) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "vegetables", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
 
 end
