@@ -9,23 +9,15 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611085919) do
+ActiveRecord::Schema.define(version: 20140722101516) do
 
-  create_table "fruits", :force => true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
-  create_table "glysellin_addresses", :force => true do |t|
-    t.boolean  "activated",                :default => true
+  create_table "glysellin_addresses", force: true do |t|
+    t.boolean  "activated",                default: true
     t.boolean  "company"
     t.string   "company_name"
     t.string   "vat_number"
@@ -39,232 +31,361 @@ ActiveRecord::Schema.define(:version => 20130611085919) do
     t.string   "tel"
     t.string   "fax"
     t.text     "additional_fields"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "shipped_addressable_type"
     t.integer  "shipped_addressable_id"
     t.string   "billed_addressable_type"
     t.integer  "billed_addressable_id"
   end
 
-  create_table "glysellin_brands", :force => true do |t|
+  create_table "glysellin_brands", force: true do |t|
     t.string   "name"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "sellables_count",    default: 0
   end
 
-  create_table "glysellin_customers", :force => true do |t|
+  create_table "glysellin_carts", force: true do |t|
+    t.string   "state"
+    t.boolean  "use_another_address_for_shipping", default: false
+    t.integer  "customer_id"
+    t.integer  "store_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "discount_code"
+    t.integer  "order_id"
+  end
+
+  create_table "glysellin_customers", force: true do |t|
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "company_name"
+    t.string   "email"
+    t.boolean  "use_another_address_for_shipping", default: false
   end
 
-  create_table "glysellin_discount_codes", :force => true do |t|
+  create_table "glysellin_discount_codes", force: true do |t|
     t.string   "name"
     t.string   "code"
     t.integer  "discount_type_id"
-    t.decimal  "value",            :precision => 11, :scale => 2
+    t.decimal  "value",            precision: 11, scale: 2
     t.datetime "expires_on"
-    t.datetime "created_at",                                      :null => false
-    t.datetime "updated_at",                                      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "glysellin_discount_codes", ["code"], :name => "index_glysellin_discount_codes_on_code"
+  add_index "glysellin_discount_codes", ["code"], name: "index_glysellin_discount_codes_on_code", using: :btree
 
-  create_table "glysellin_discount_types", :force => true do |t|
+  create_table "glysellin_discount_types", force: true do |t|
     t.string   "name"
     t.string   "identifier"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "glysellin_line_items", :force => true do |t|
+  create_table "glysellin_discounts", force: true do |t|
+    t.string   "name"
+    t.decimal  "value"
+    t.integer  "discount_type_id"
+    t.integer  "discountable_id"
+    t.string   "discountable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "glysellin_imageables", force: true do |t|
+    t.integer  "imageable_owner_id"
+    t.string   "imageable_owner_type"
+    t.integer  "image_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "glysellin_images", force: true do |t|
+    t.string   "name"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+  end
+
+  create_table "glysellin_invoices", force: true do |t|
+    t.string   "number"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "glysellin_line_items", force: true do |t|
     t.string   "sku"
     t.string   "name"
-    t.decimal  "eot_price",  :precision => 11, :scale => 2
-    t.decimal  "price",      :precision => 11, :scale => 2
-    t.decimal  "vat_rate",   :precision => 11, :scale => 2
+    t.decimal  "eot_price",      precision: 11, scale: 2
+    t.decimal  "price",          precision: 11, scale: 2
+    t.decimal  "vat_rate",       precision: 11, scale: 2
     t.integer  "quantity"
-    t.integer  "order_id"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
-    t.decimal  "weight",     :precision => 11, :scale => 3
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "weight",         precision: 11, scale: 3
     t.integer  "variant_id"
+    t.integer  "container_id"
+    t.string   "container_type"
   end
 
-  create_table "glysellin_order_adjustments", :force => true do |t|
+  create_table "glysellin_order_adjustments", force: true do |t|
     t.string   "name"
-    t.decimal  "value",           :precision => 11, :scale => 2
+    t.decimal  "value",           precision: 11, scale: 2
     t.integer  "order_id"
     t.integer  "adjustment_id"
     t.string   "adjustment_type"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "glysellin_orders", :force => true do |t|
+  create_table "glysellin_orders", force: true do |t|
     t.string   "ref"
     t.string   "status"
     t.datetime "paid_on"
     t.integer  "user_id"
-    t.string   "state"
     t.integer  "customer_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.integer  "shipping_method_id"
-  end
-
-  create_table "glysellin_payment_methods", :force => true do |t|
-    t.string   "name"
-    t.string   "slug"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "glysellin_payments", :force => true do |t|
-    t.string   "status"
-    t.integer  "type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "comment"
+    t.boolean  "use_another_address_for_shipping",                          default: false
+    t.string   "payment_state"
+    t.decimal  "total_price",                      precision: 11, scale: 2
+    t.decimal  "total_eot_price",                  precision: 11, scale: 2
+    t.integer  "store_id"
+    t.string   "state"
+    t.string   "type"
     t.integer  "order_id"
-    t.datetime "last_payment_action_on"
-    t.integer  "transaction_id"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
   end
 
-  create_table "glysellin_product_associations", :force => true do |t|
+  create_table "glysellin_parcels", force: true do |t|
+    t.string   "name"
+    t.integer  "sendable_id"
+    t.string   "sendable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "glysellin_payment_methods", force: true do |t|
+    t.string   "name"
+    t.string   "identifier"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "glysellin_payments", force: true do |t|
+    t.integer  "payment_method_id"
+    t.datetime "received_on"
+    t.integer  "transaction_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "amount",            precision: 11, scale: 2, default: 0.0
+    t.string   "state"
+    t.integer  "payable_id"
+    t.string   "payable_type"
+  end
+
+  create_table "glysellin_product_associations", force: true do |t|
     t.integer  "position"
     t.integer  "associated_product_id"
     t.integer  "referer_product_id"
-    t.integer  "product_id"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "glysellin_product_images", :force => true do |t|
-    t.string   "name"
-    t.integer  "imageable_id"
-    t.string   "imageable_type"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-  end
-
-  create_table "glysellin_product_properties", :force => true do |t|
+  create_table "glysellin_product_properties", force: true do |t|
     t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "type_id"
     t.integer  "variant_id"
   end
 
-  create_table "glysellin_product_property_types", :force => true do |t|
+  create_table "glysellin_product_property_types", force: true do |t|
     t.string "name"
   end
 
-  create_table "glysellin_products", :force => true do |t|
-    t.decimal  "vat_rate",      :precision => 11, :scale => 2
-    t.integer  "brand_id"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
-    t.string   "sellable_type"
-    t.integer  "sellable_id"
+  create_table "glysellin_properties", force: true do |t|
+    t.string   "value"
+    t.integer  "property_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "barcode_ref"
   end
 
-  create_table "glysellin_shipping_methods", :force => true do |t|
+  create_table "glysellin_property_types", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "name"
     t.string   "identifier"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
-  add_index "glysellin_shipping_methods", ["identifier"], :name => "index_glysellin_shipping_methods_on_identifier"
+  create_table "glysellin_sellables", force: true do |t|
+    t.decimal  "vat_rate",        precision: 11, scale: 2
+    t.integer  "brand_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "taxonomy_id"
+    t.boolean  "unlimited_stock",                          default: false
+    t.decimal  "eot_price",       precision: 11, scale: 2
+    t.decimal  "price",           precision: 11, scale: 2
+    t.decimal  "weight",          precision: 11, scale: 3
+    t.string   "thumb"
+    t.integer  "variants_count",                           default: 0
+  end
 
-  create_table "glysellin_variants", :force => true do |t|
+  create_table "glysellin_shipments", force: true do |t|
+    t.integer  "shipping_method_id"
+    t.datetime "sent_on"
+    t.decimal  "eot_price",          precision: 11, scale: 2
+    t.decimal  "price",              precision: 11, scale: 2
+    t.string   "tracking_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "state"
+    t.integer  "shippable_id"
+    t.string   "shippable_type"
+  end
+
+  create_table "glysellin_shipping_methods", force: true do |t|
+    t.string   "name"
+    t.string   "identifier"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "glysellin_shipping_methods", ["identifier"], name: "index_glysellin_shipping_methods_on_identifier", using: :btree
+
+  create_table "glysellin_stocks", force: true do |t|
+    t.integer  "count",      default: 0
+    t.integer  "store_id"
+    t.integer  "variant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "glysellin_store_clients", force: true do |t|
+    t.string   "name"
+    t.string   "key"
+    t.integer  "store_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "default_taxonomy_id"
+  end
+
+  create_table "glysellin_stores", force: true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.string   "city"
+    t.string   "country"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "glysellin_taxonomies", force: true do |t|
+    t.string  "name"
+    t.text    "description"
+    t.string  "barcode_ref"
+    t.integer "parent_id"
+    t.integer "children_count",  default: 0
+    t.text    "full_path"
+    t.integer "sellables_count", default: 0
+  end
+
+  add_index "glysellin_taxonomies", ["parent_id"], name: "index_glysellin_taxonomies_on_parent_id", using: :btree
+
+  create_table "glysellin_variant_properties", force: true do |t|
+    t.integer "variant_id"
+    t.integer "property_id"
+  end
+
+  create_table "glysellin_variants", force: true do |t|
     t.string   "sku"
     t.string   "name"
     t.string   "slug"
-    t.decimal  "eot_price",       :precision => 11, :scale => 2
-    t.decimal  "price",           :precision => 11, :scale => 2
-    t.integer  "in_stock",                                       :default => 0
-    t.boolean  "unlimited_stock",                                :default => false
-    t.boolean  "published",                                      :default => true
-    t.datetime "created_at",                                                        :null => false
-    t.datetime "updated_at",                                                        :null => false
-    t.decimal  "weight"
-    t.decimal  "unmarked_price",  :precision => 11, :scale => 2
+    t.boolean  "published",                               default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "unmarked_price", precision: 11, scale: 2
     t.integer  "sellable_id"
-    t.string   "sellable_type"
   end
 
-  create_table "rails_admin_histories", :force => true do |t|
+  create_table "rails_admin_histories", force: true do |t|
     t.text     "message"
     t.string   "username"
     t.integer  "item"
     t.string   "table"
-    t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 5
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.integer  "month",      limit: 2
+    t.integer  "year",       limit: 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
 
-  create_table "restful_sync_api_clients", :force => true do |t|
+  create_table "restful_sync_api_clients", force: true do |t|
     t.string   "authentication_token"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "restful_sync_api_clients", ["authentication_token"], :name => "index_restful_sync_api_clients_on_authentication_token", :unique => true
+  add_index "restful_sync_api_clients", ["authentication_token"], name: "index_restful_sync_api_clients_on_authentication_token", unique: true, using: :btree
 
-  create_table "restful_sync_api_targets", :force => true do |t|
+  create_table "restful_sync_api_targets", force: true do |t|
     t.string   "end_point"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "restful_sync_sync_refs", :force => true do |t|
+  create_table "restful_sync_sync_refs", force: true do |t|
     t.integer  "resource_id"
     t.string   "resource_type"
     t.string   "uuid"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+  create_table "taxonomies_store_clients", force: true do |t|
+    t.integer  "taxonomy_id"
+    t.integer  "store_client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",          default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "customer_id"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "vegetables", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-  end
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @fruits = Fruit.published
-    @vegetables = Vegetable.published
+    @sellables = Glysellin::Sellable.all
   end
 end

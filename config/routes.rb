@@ -1,7 +1,4 @@
 GlysellinTest::Application.routes.draw do
-
-  # mount RestfulSync::Engine => '/api', :as => 'api' 
-
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users

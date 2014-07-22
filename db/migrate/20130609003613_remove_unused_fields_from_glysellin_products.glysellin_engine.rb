@@ -1,8 +1,14 @@
 # This migration comes from glysellin_engine (originally 20130609023300)
 class RemoveUnusedFieldsFromGlysellinProducts < ActiveRecord::Migration
   def up
-    remove_column :glysellin_products, :name, :description, :position, :slug,
-      :sku, :published
+    change_table :glysellin_products do |t|
+      t.remove :name
+      t.remove :description
+      t.remove :position
+      t.remove :slug
+      t.remove :sku
+      t.remove :published
+    end
   end
 
   def down

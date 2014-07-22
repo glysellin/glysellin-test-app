@@ -23,33 +23,9 @@ RailsAdmin.config do |config|
   # config.compact_show_view = false
   config.excluded_models = ["RestfulSync::SyncRef"]
 
-  config.model "Vegetable" do
-    navigation_label "Products"
-
-    configure :variant do
-      active true
-    end
-
-    configure :product do
-      active true
-    end
-  end
-
-  config.model "Fruit" do
-    navigation_label "Products"
-
-    configure :variants do
-      active true
-    end
-
-    configure :product do
-      active true
-    end
-  end
-
   [
-    "DiscountType", "OrderAdjustment", "PaymentMethod", "ProductImage",
-    "ProductProperty", "ProductPropertyType", "ShippingMethod"
+    "DiscountType", "OrderAdjustment", "PaymentMethod", "ProductProperty",
+    "ProductPropertyType", "ShippingMethod"
   ].each do |model_name|
     config.model "Glysellin::#{ model_name }" do
       visible false
@@ -64,25 +40,22 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model "Glysellin::Product" do
-    visible false
-
-    nested do
-      exclude_fields :sellable
-
-      configure :vat_rate do
-        default_value do
-          Glysellin.default_vat_rate
-        end
+  config.model "Glysellin::Sellable" do
+    configure :vat_rate do
+      default_value do
+        Glysellin.default_vat_rate
       end
     end
+
+    include_fields :name, :description, :taxonomy, :eot_price, :price, :images,
+                   :unlimited_stock, :variants
   end
 
   config.model "Glysellin::Variant" do
     visible false
 
     nested do
-      exclude_fields :sellable
+      include_fields :sku, :name, :published, :stocks
 
       configure :name do
         visible do
@@ -108,6 +81,18 @@ RailsAdmin.config do |config|
         end
       end
     end
+  end
+
+  config.model "Glysellin::Stock" do
+    nested do
+      include_fields :store, :count
+    end
+  end
+
+  config.model "Glysellin::Image" do
+    navigation_label "Shop"
+
+    include_fields :image
   end
 
   config.model "Glysellin::Order" do
@@ -146,7 +131,7 @@ RailsAdmin.config do |config|
     end
 
     include_fields :state, :paid_on, :customer, :billing_address,
-      :shipping_address, :payments, :products
+      :shipping_address, :payments, :line_items
   end
 
   config.model "Glysellin::Address" do
@@ -181,7 +166,7 @@ RailsAdmin.config do |config|
 
   config.model "Glysellin::Payment" do
     visible false
-    include_fields :status, :type, :last_payment_action_on
+    include_fields :state, :payment_method, :received_on
   end
 
   def order_name

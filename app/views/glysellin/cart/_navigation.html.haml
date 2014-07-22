@@ -1,9 +1,9 @@
 .wizard
   %ul.cart-navigation.steps
-    - @states.each_with_index do |state, index|
-      - complete = index < @cart.state_index
-      - current_state = state == @cart.state
-      %li{ class: (current_state ? "active" : (@cart.state_index > index ? "complete" : "")), data: { state: state, url: (set_cart_state_path(state) if complete) } }
+    - current_cart.available_states.each_with_index do |state, index|
+      - complete = index < current_cart.state_index
+      - current_state = state == current_cart.state
+      %li{ class: (current_state ? "active" : (current_cart.state_index > index ? "complete" : "")), data: { state: state, url: (set_cart_state_path(state) if complete) } }
         %span.badge{ class: (current_state ? "badge-info" : (complete ? "badge-success" : "")) }
           = index + 1
         = t("glysellin.cart.states.#{ state }")
